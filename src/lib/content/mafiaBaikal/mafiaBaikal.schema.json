@@ -1,0 +1,17 @@
+{
+  "name": "mafiaBaikal",
+  "type": "model",
+  "framework": "vanilla-js",
+  "description": "Байкальская мафия: описание игры и 18 персонажей карточек с текстом и справкой.",
+  "schema": {
+    "required": ["slug", "title", "description", "characters"],
+    "properties": {
+      "slug": { "type": "string", "description": "Идентификатор игры" },
+      "title": { "type": "string", "description": "Название игры" },
+      "description": { "type": "string", "description": "Краткое описание игры" },
+      "image": { "type": "string", "description": "Изображение рубашки карточек от корня сайта" },
+      "facts": { "type": "array", "description": "Быстрые факты: label и value" },
+      "characters": { "type": "array", "description": "Персонажи: id, name, team (peaceful | predator | special), when, cardText, summary, alias?, oneTime?, discrepancy?" }
+    }
+  }
+}

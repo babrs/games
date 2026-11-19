@@ -1,0 +1,10 @@
+{
+  "name": "NotesModal",
+  "type": "component",
+  "svelteVersion": 5,
+  "description": "Заметки ведущего во весь экран: список, редактирование, сохранение и удаление.",
+  "props": [
+    { "name": "open", "type": "boolean", "required": true, "description": "Показывать окно" },
+    { "name": "onclose", "type": "function", "required": true, "isEvent": true, "arguments": [], "description": "Закрыть заметки" }
+  ]
+}

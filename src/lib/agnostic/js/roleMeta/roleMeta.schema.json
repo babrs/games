@@ -1,0 +1,20 @@
+{
+  "name": "roleMeta",
+  "type": "model",
+  "framework": "vanilla-js",
+  "description": "Подписи, значки и фракции ролей Байкальской мафии.",
+  "schema": {
+    "required": ["predator", "owl", "peaceful", "spirit", "eagle", "fox", "vole", "gammarus", "angara"],
+    "properties": {
+      "predator": { "type": "object", "description": "Хищник: icon, label, faction" },
+      "owl": { "type": "object", "description": "Сова: icon, label, faction" },
+      "peaceful": { "type": "object", "description": "Мирный житель: icon, label, faction" },
+      "spirit": { "type": "object", "description": "Дух Байкала (Хранитель): icon, label, faction" },
+      "eagle": { "type": "object", "description": "Орлан-белохвост: icon, label, faction" },
+      "fox": { "type": "object", "description": "Лиса: icon, label, faction" },
+      "vole": { "type": "object", "description": "Ольхонская полёвка: icon, label, faction" },
+      "gammarus": { "type": "object", "description": "Гаммарус: icon, label, faction" },
+      "angara": { "type": "object", "description": "Ангара: icon, label, faction" }
+    }
+  }
+}

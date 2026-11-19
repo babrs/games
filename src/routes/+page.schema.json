@@ -1,0 +1,9 @@
+{
+  "name": "PortalPage",
+  "type": "page",
+  "framework": "SvelteKit 2",
+  "svelteVersion": 5,
+  "route": "/",
+  "description": "Портал игр: список игр со ссылками на их разделы.",
+  "inputData": { "properties": {}, "required": [] }
+}

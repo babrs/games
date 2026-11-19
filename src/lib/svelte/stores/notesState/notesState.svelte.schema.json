@@ -1,0 +1,8 @@
+{
+  "name": "notesState",
+  "type": "state-utility",
+  "svelteVersion": 5,
+  "description": "Заметки ведущего: список с заголовками и текстом, сохраняется в localStorage.",
+  "parameters": [],
+  "returns": { "type": "object", "properties": { "notes": { "type": "array", "description": "Список заметок реактивным геттером" }, "add": { "type": "function", "description": "Создаёт заметку" }, "update": { "type": "function", "description": "Меняет заметку по id" }, "remove": { "type": "function", "description": "Удаляет заметку по id" } } }
+}

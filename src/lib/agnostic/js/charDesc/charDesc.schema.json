@@ -1,0 +1,14 @@
+{
+  "name": "charDesc",
+  "type": "model",
+  "framework": "vanilla-js",
+  "description": "Справочник персонажей для экрана ведущего: группы с иконкой, названием и текстом.",
+  "schema": {
+    "required": ["icon", "name", "text"],
+    "properties": {
+      "icon": { "type": "string", "description": "Значок группы" },
+      "name": { "type": "string", "description": "Название группы или персонажа" },
+      "text": { "type": "string", "description": "Описание" }
+    }
+  }
+}

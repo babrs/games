@@ -1,0 +1,15 @@
+{
+  "name": "dobbleBaikalRules",
+  "type": "model",
+  "framework": "vanilla-js",
+  "description": "Правила Good Dobble «Байкал»: заголовок, описание и список правил.",
+  "schema": {
+    "required": ["title", "rules"],
+    "properties": {
+      "title": { "type": "string", "description": "Заголовок страницы правил" },
+      "description": { "type": "string", "description": "Описание для поисковых систем" },
+      "heroImage": { "type": "string", "description": "Путь к изображению баннера от корня сайта" },
+      "rules": { "type": "array", "description": "Правила: title (заголовок) и text (HTML-текст)" }
+    }
+  }
+}

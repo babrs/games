@@ -4,15 +4,10 @@ const dev = process.argv.includes('dev');
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  kit: {
-    adapter: adapter({
-      pages: 'build',
-      assets: 'build'
-    }),
-    paths: {
-      base: dev ? '' : '/games'
-    }
-  }
+	kit: {
+		adapter: adapter({ pages: 'build', assets: 'build', strict: true }),
+		paths: { base: dev ? '' : '/games' }
+	}
 };
 
 export default config;

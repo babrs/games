@@ -1,0 +1,8 @@
+{
+  "name": "phaseActionInfo",
+  "type": "utility",
+  "framework": "vanilla-js",
+  "description": "Подпись действия фазы: текст, бейдж, класс оформления и ключ бейджа.",
+  "parameters": [{ "name": "phase", "type": "string", "optional": false, "description": "Идентификатор фазы" }],
+  "returns": { "type": "object", "description": "{ text, badge, cls, badgeKey }" }
+}

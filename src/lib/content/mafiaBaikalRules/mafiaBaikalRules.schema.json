@@ -1,0 +1,14 @@
+{
+  "name": "mafiaBaikalRules",
+  "type": "model",
+  "framework": "vanilla-js",
+  "description": "Правила Байкальской мафии: разделы с пунктами, упорядоченные списки для порядка ночи и дня.",
+  "schema": {
+    "required": ["title", "sections"],
+    "properties": {
+      "title": { "type": "string", "description": "Заголовок страницы правил" },
+      "description": { "type": "string", "description": "Описание для поисковых систем" },
+      "sections": { "type": "array", "description": "Разделы: id, title, items (строки), ordered (нумерованный список, необязательно)" }
+    }
+  }
+}

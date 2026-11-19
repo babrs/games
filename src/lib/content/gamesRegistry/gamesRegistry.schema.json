@@ -1,0 +1,15 @@
+{
+  "name": "gamesRegistry",
+  "type": "model",
+  "framework": "vanilla-js",
+  "description": "Реестр игр платформы Babrs: данные для витрины на главной странице.",
+  "schema": {
+    "required": ["slug", "title", "text", "path"],
+    "properties": {
+      "slug": { "type": "string", "description": "Идентификатор игры" },
+      "title": { "type": "string", "description": "Название игры" },
+      "text": { "type": "string", "description": "Краткое описание для карточки" },
+      "path": { "type": "string", "description": "Путь к игре от корня раздела games, с завершающим слэшем" }
+    }
+  }
+}

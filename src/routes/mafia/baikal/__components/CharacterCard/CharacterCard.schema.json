@@ -1,0 +1,10 @@
+{
+  "name": "CharacterCard",
+  "type": "component",
+  "svelteVersion": 5,
+  "description": "Карточка персонажа Байкальской мафии: изображение, команда и (в крупном варианте) текст с карточки и справка.",
+  "props": [
+    { "name": "character", "type": "Character", "required": true, "description": "Персонаж из mafiaBaikal.characters с полями image и teamLabel" },
+    { "name": "variant", "type": "'card' | 'large'", "required": false, "defaultValue": "card", "description": "Оформление: плитка сетки или крупный просмотр с описанием" }
+  ]
+}

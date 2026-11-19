@@ -1,0 +1,11 @@
+{
+  "name": "phaseSpeechText",
+  "type": "utility",
+  "framework": "vanilla-js",
+  "description": "Текст, который ведущий читает вслух в начале фазы.",
+  "parameters": [
+    { "name": "phase", "type": "string", "optional": false, "description": "Идентификатор фазы" },
+    { "name": "owlEnabled", "type": "boolean", "optional": false, "description": "Участвует ли Сова в ночном выборе" }
+  ],
+  "returns": { "type": "string", "description": "Текст для ведущего" }
+}

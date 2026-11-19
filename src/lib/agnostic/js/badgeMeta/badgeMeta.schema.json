@@ -1,0 +1,18 @@
+{
+  "name": "badgeMeta",
+  "type": "model",
+  "framework": "vanilla-js",
+  "description": "Подписи и CSS-классы бейджей действий ведущего.",
+  "schema": {
+    "required": ["attack", "protect", "check", "mute", "clean", "gift", "exile"],
+    "properties": {
+      "attack": { "type": "object", "description": "Атака: text, cls" },
+      "protect": { "type": "object", "description": "Спасён: text, cls" },
+      "check": { "type": "object", "description": "Проверка: text, cls" },
+      "mute": { "type": "object", "description": "Молчит: text, cls" },
+      "clean": { "type": "object", "description": "Зачистка: text, cls" },
+      "gift": { "type": "object", "description": "Дар: text, cls" },
+      "exile": { "type": "object", "description": "Изгнан: text, cls" }
+    }
+  }
+}

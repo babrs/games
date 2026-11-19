@@ -1,0 +1,8 @@
+{
+  "name": "buildPhases",
+  "type": "utility",
+  "framework": "vanilla-js",
+  "description": "Собирает порядок фаз ночи и дня из выбранных особых ролей.",
+  "parameters": [{ "name": "config", "type": "object", "optional": false, "description": "{ specials: { spirit, eagle, fox, gammarus, angara } }" }],
+  "returns": { "type": "array", "description": "Идентификаторы фаз по порядку" }
+}

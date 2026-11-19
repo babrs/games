@@ -1,0 +1,14 @@
+{
+  "name": "DobbleSymbolsPage",
+  "type": "page",
+  "framework": "SvelteKit 2",
+  "svelteVersion": 5,
+  "route": "/dobble",
+  "description": "Good Dobble «Байкал»: сетка из 57 символов, открытие описания в галерее.",
+  "inputData": {
+    "properties": {
+      "game": { "type": "object", "required": ["title", "description", "symbols"], "properties": { "title": { "type": "string" }, "description": { "type": "string" }, "symbols": { "type": "array" } } }
+    },
+    "required": ["game"]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "PlayerRow",
+  "type": "component",
+  "svelteVersion": 5,
+  "description": "Строка игрока на экране ведущего: имя, роль, бейджи действий и ограничения.",
+  "props": [
+    { "name": "player", "type": "object", "required": true, "description": "Игрок: id, name, role, faction, статусы" },
+    { "name": "highlight", "type": "boolean", "required": false, "defaultValue": false, "description": "Подсветить строку" },
+    { "name": "avatarLocked", "type": "boolean", "required": false, "defaultValue": false, "description": "Аватар недоступен для смены" },
+    { "name": "onavatar", "type": "function", "required": true, "isEvent": true, "arguments": [], "description": "Нажатие на аватар" },
+    { "name": "onlongpress", "type": "function", "required": true, "isEvent": true, "arguments": [], "description": "Долгое нажатие на строку" },
+    { "name": "onrow", "type": "function", "required": true, "isEvent": true, "arguments": [], "description": "Нажатие на строку" },
+    { "name": "onbadge", "type": "function", "required": true, "isEvent": true, "arguments": [{ "name": "type", "type": "string", "description": "Тип бейджа" }], "description": "Нажатие на бейдж действия" },
+    { "name": "onrename", "type": "function", "required": true, "isEvent": true, "arguments": [{ "name": "name", "type": "string", "description": "Новое имя" }], "description": "Переименование игрока" }
+  ]
+}

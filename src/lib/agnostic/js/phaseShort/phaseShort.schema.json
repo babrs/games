@@ -1,0 +1,8 @@
+{
+  "name": "phaseShort",
+  "type": "utility",
+  "framework": "vanilla-js",
+  "description": "Короткое название фазы для экрана ведущего: Ночь, Утро или День.",
+  "parameters": [{ "name": "phase", "type": "string", "optional": false, "description": "Идентификатор фазы" }],
+  "returns": { "type": "string", "description": "Короткое название фазы" }
+}

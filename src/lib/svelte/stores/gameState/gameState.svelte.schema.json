@@ -1,0 +1,72 @@
+{
+  "name": "gameState",
+  "type": "state-utility",
+  "svelteVersion": 5,
+  "description": "Общее состояние ведущего: игроки, роли, фазы ночи и дня, журнал и подтверждения. Сохраняется в localStorage.",
+  "parameters": [],
+  "returns": {
+    "type": "object",
+    "properties": {
+      "setup": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "editingSettings": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "round": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "phaseIndex": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "phases": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "players": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "pool": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "config": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "log": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "owlEnabled": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "voleEnabled": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "badgeUsed": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "gameOver": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "intermission": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      },
+      "confirm": {
+        "type": "any",
+        "description": "Свойство или метод стора, см. gameState.svelte.js"
+      }
+    }
+  }
+}

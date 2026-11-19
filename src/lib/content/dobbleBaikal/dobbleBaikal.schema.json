@@ -1,0 +1,18 @@
+{
+  "name": "dobbleBaikal",
+  "type": "model",
+  "framework": "vanilla-js",
+  "description": "Колода Good Dobble «Байкал»: 57 символов с описаниями и изображениями.",
+  "schema": {
+    "required": ["slug", "title", "description", "symbols"],
+    "properties": {
+      "slug": { "type": "string", "description": "Идентификатор игры в адресе" },
+      "title": { "type": "string", "description": "Название игры" },
+      "shortTitle": { "type": "string", "description": "Короткое название" },
+      "description": { "type": "string", "description": "Описание для поисковых систем и шапки страницы" },
+      "keywords": { "type": "array", "description": "Ключевые слова страницы" },
+      "heroImage": { "type": "string", "description": "Путь к изображению баннера от корня сайта" },
+      "symbols": { "type": "array", "description": "Символы: id, title, description, image (путь от корня сайта)" }
+    }
+  }
+}
