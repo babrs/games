@@ -77,7 +77,7 @@
 				<div class="symbol-modal__image" {@attach pullDirection(handleGesture, { threshold: 15 })}>
 					<img
 						src={symbol.image}
-						alt={`${symbol.title}: символ игры Good Dobble «Байкал»`}
+						alt={`${symbol.title}: символ игры Добрый Доббль «Байкал»`}
 						loading="eager"
 						decoding="async"
 						width="520"

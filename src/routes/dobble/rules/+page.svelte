@@ -8,14 +8,14 @@
 </script>
 
 <svelte:head>
-	<title>{rules.title} | Babrs Games</title>
+	<title>{rules.title} | Babr Games</title>
 	<meta name="description" content={rules.description} />
 </svelte:head>
 
 <HeroBanner backgroundImage={rules.heroImage} title="Добрый Доббль" titleImage="{base}/images/dobble/baikal/title-baikal.webp" titleAlt="Добрый Доббль" />
 
 <TabSwitcher
-	label="Разделы Good Dobble"
+	label="Разделы Добрый Доббль"
 	active="rules"
 	items={[
 		{ id: 'symbols', href: `${base}/dobble/`, label: 'Символы' },

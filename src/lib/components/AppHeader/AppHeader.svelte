@@ -31,12 +31,12 @@
 	}
 </script>
 
-<header class="app-header" use:smartHeader={{ topOffset: 20 }}>
+<header class="app-header" {@attach smartHeader({ topOffset: 0, onhide: closeMenu })}>
 	<div class="container app-header__inner">
 		<a class="app-header__brand" href={homeHref} onclick={closeMenu}>
 			<Logo />
 			<div class="app-header__titles">
-				<span class="app-header__title">Babr Games</span>
+				<span class="app-header__title">{brand}</span>
 				{#if tagline}<span class="app-header__tagline">{tagline}</span>{/if}
 			</div>
 		</a>
@@ -48,16 +48,16 @@
 			aria-expanded={menuOpen}
 			onclick={toggleMenu}
 		>
-			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
-			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
-			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
+			<span class="app-header__burger-line"></span>
+			<span class="app-header__burger-line"></span>
+			<span class="app-header__burger-line"></span>
 		</button>
 
 		<nav
 			class="app-header__nav"
 			class:app-header__nav_open={menuOpen}
 			aria-label="Основная навигация"
-			use:outsideClick={closeMenu}
+			{@attach outsideClick(closeMenu, { ignore: '.app-header__burger' })}
 		>
 			{#each navItems as item (item.href)}
 				<a
@@ -76,7 +76,7 @@
 
 <style>
 	.app-header {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		right: 0;
@@ -84,24 +84,20 @@
 		border-bottom: 1px solid transparent;
 		background: transparent;
 		color: var(--color-on-hero, #fff);
+		transform: translate3d(0, var(--smart-header-shift, 0px), 0);
 		transition:
-			background 350ms cubic-bezier(0.22, 1, 0.36, 1),
+			background-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
 			border-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
 			color 350ms cubic-bezier(0.22, 1, 0.36, 1),
-			transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
 			box-shadow 350ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
-	.app-header:global(.is-solid) {
+	.app-header:global([data-solid]) {
 		border-bottom-color: var(--color-border);
 		background: color-mix(in srgb, var(--color-surface) 92%, transparent);
 		backdrop-filter: blur(12px);
 		color: var(--color-text);
 		box-shadow: var(--shadow-sm);
-	}
-
-	.app-header:global(.is-hidden) {
-		transform: translateY(-100%);
 	}
 
 	.app-header__inner {
@@ -155,6 +151,7 @@
 		padding: 0;
 		border: 0;
 		background: transparent;
+		color: inherit;
 		cursor: pointer;
 	}
 
@@ -164,7 +161,6 @@
 		height: 3px;
 		border-radius: var(--radius-pill);
 		background: currentColor;
-		transition: transform var(--duration-fast), opacity var(--duration-fast);
 	}
 
 	.app-header__nav {
@@ -181,12 +177,20 @@
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-bold);
 		text-decoration: none;
-		transition: opacity var(--duration-fast), background var(--duration-fast), color var(--duration-fast);
+		transition:
+			opacity var(--duration-fast),
+			background-color var(--duration-fast),
+			color var(--duration-fast);
 	}
 
 	.app-header__link:hover,
 	.app-header__link_current {
 		opacity: 1;
+		background: rgb(255 255 255 / 0.18);
+	}
+
+	.app-header:global([data-solid]) .app-header__link:hover,
+	.app-header:global([data-solid]) .app-header__link_current {
 		color: var(--color-primary);
 		background: var(--color-primary-glow);
 	}
@@ -211,7 +215,10 @@
 			opacity: 0;
 			visibility: hidden;
 			transform: translateY(-8px);
-			transition: opacity var(--duration-fast), transform var(--duration-fast), visibility var(--duration-fast);
+			transition:
+				opacity var(--duration-fast),
+				transform var(--duration-fast),
+				visibility var(--duration-fast);
 		}
 
 		.app-header__nav_open {
@@ -223,6 +230,12 @@
 		.app-header__link {
 			padding: 0.75rem 1rem;
 			border-radius: var(--radius-md);
+		}
+
+		.app-header__link:hover,
+		.app-header__link_current {
+			color: var(--color-primary);
+			background: var(--color-primary-glow);
 		}
 	}
 </style>

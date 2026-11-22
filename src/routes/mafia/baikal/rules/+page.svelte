@@ -7,7 +7,7 @@
 </script>
 
 <svelte:head>
-	<title>{data.rules.title} | Babrs Games</title>
+	<title>{data.rules.title} | Babr Games</title>
 	<meta name="description" content={data.rules.description} />
 </svelte:head>
 

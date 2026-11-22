@@ -1,38 +1,43 @@
-export function smartHeader(node, { topOffset = 0, hideAfter } = {}) {
-	let lastY = window.scrollY;
-	let frame = 0;
+export function smartHeader({ topOffset = 0, hideDistance, onhide } = {}) {
+	return (node) => {
+		const distance = () => hideDistance ?? node.offsetHeight;
+		let lastY = Math.max(window.scrollY, 0);
+		let shift = lastY > topOffset ? -distance() : 0;
+		let frame = 0;
 
-	function update() {
-		frame = 0;
-		const y = window.scrollY;
-		const threshold = hideAfter ?? node.offsetHeight;
+		const render = () => node.style.setProperty('--smart-header-shift', `${shift}px`);
 
-		if (y <= topOffset) {
-			node.classList.remove('is-solid', 'is-hidden');
-		} else if (y > lastY && y > threshold) {
-			node.classList.remove('is-solid');
-			node.classList.add('is-hidden');
-		} else if (y < lastY) {
-			node.classList.remove('is-hidden');
-			node.classList.add('is-solid');
-		}
+		const update = () => {
+			frame = 0;
+			const y = Math.max(window.scrollY, 0);
+			const delta = y - lastY;
+			lastY = y;
 
-		lastY = y;
-	}
+			if (y <= topOffset) {
+				shift = 0;
+				node.removeAttribute('data-solid');
+			} else if (delta < 0) {
+				shift = Math.min(0, shift - delta);
+				node.setAttribute('data-solid', '');
+			} else if (delta > 0) {
+				shift = Math.max(-distance(), shift - delta);
+				node.removeAttribute('data-solid');
+				onhide?.();
+			}
 
-	function onScroll() {
-		if (!frame) frame = requestAnimationFrame(update);
-	}
+			render();
+		};
 
-	update();
-	window.addEventListener('scroll', onScroll, { passive: true });
+		const onScroll = () => {
+			if (!frame) frame = requestAnimationFrame(update);
+		};
 
-	return {
-		destroy() {
+		render();
+		window.addEventListener('scroll', onScroll, { passive: true });
+
+		return () => {
 			window.removeEventListener('scroll', onScroll);
 			cancelAnimationFrame(frame);
-		}
+		};
 	};
 }
-
-export default smartHeader;

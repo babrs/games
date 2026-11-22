@@ -7,11 +7,11 @@
 </script>
 
 <svelte:head>
-	<title>Babrs Games — игры для семьи</title>
-	<meta name="description" content="Настольные игры Babrs: Good Dobble «Байкал» и Байкальская мафия с приложением для ведущего." />
+	<title>Babr Games — игры для семьи</title>
+	<meta name="description" content="Настольные игры Babr Games: Добрый Доббль «Байкал» и Байкальская мафия с приложением для ведущего." />
 </svelte:head>
 
-<HeroBanner title="Игры Babrs" backgroundImage="{base}/images/dobble/baikal/hero-baikal.webp">
+<HeroBanner title="Игры Babr Games" backgroundImage="{base}/images/dobble/baikal/hero-baikal.webp">
 	<p class="lead"><strong>Привет! Я Бабр.</strong> Настольные игры с понятными правилами, красивыми карточками и приложением для ведущего.</p>
 </HeroBanner>
 

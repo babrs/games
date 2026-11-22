@@ -12,7 +12,7 @@
 </script>
 
 <svelte:head>
-	<title>Ведущий — Байкальская мафия | Babrs Games</title>
+	<title>Ведущий — Байкальская мафия | Babr Games</title>
 	<meta name="description" content="Приложение ведущего для игры «Байкальская мафия». Работает без интернета после первого открытия." />
 	<link rel="manifest" href="{base}/mafia/baikal/host/manifest.webmanifest" />
 	<link rel="apple-touch-icon" href="{base}/mafia/baikal/host/icons/apple-touch-icon.png" />

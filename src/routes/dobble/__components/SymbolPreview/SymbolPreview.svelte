@@ -21,7 +21,7 @@
 	<div class="symbol__media">
 		<img
 			src={symbol.image}
-			alt={`${symbol.title}: символ игры Good Dobble «Байкал»`}
+			alt={`${symbol.title}: символ игры Добрый Доббль «Байкал»`}
 			loading="lazy"
 			decoding="async"
 			width="320"

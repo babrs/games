@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-	<title>Good Dobble «Байкал» — символы игры | Babrs Games</title>
+	<title>Добрый Доббль «Байкал» — символы игры | Babr Games</title>
 	<meta name="description" content={game.description} />
 	<meta name="keywords" content={game.keywords.join(', ')} />
 </svelte:head>
@@ -35,7 +35,7 @@
 	<h2 class="section__title" id="symbols-title">Символы игры</h2>
 	<p class="section__lead">Нажмите на карточку, чтобы открыть описание символа. Стрелками и свайпом можно листать колоду.</p>
 
-	<CardGrid items={game.symbols} label="Символы игры Good Dobble «Байкал»" onopen={(index) => (openIndex = index)}>
+	<CardGrid items={game.symbols} label="Символы игры Добрый Доббль «Байкал»" onopen={(index) => (openIndex = index)}>
 		{#snippet item(symbol)}
 			<SymbolPreview {symbol} />
 		{/snippet}

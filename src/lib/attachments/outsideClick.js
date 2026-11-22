@@ -1,19 +1,13 @@
-export function outsideClick(node, callback) {
-	function handleClick(event) {
-		if (node && !node.contains(event.target)) {
-			callback();
-		}
-	}
+export function outsideClick(onoutside, { ignore } = {}) {
+	return (node) => {
+		const handle = (event) => {
+			const { target } = event;
+			if (node.contains(target)) return;
+			if (ignore && target instanceof Element && target.closest(ignore)) return;
+			onoutside();
+		};
 
-	setTimeout(() => {
-		document.addEventListener('click', handleClick, true);
-	}, 0);
-
-	return {
-		destroy() {
-			document.removeEventListener('click', handleClick, true);
-		}
+		document.addEventListener('click', handle, true);
+		return () => document.removeEventListener('click', handle, true);
 	};
 }
-
-export default outsideClick;

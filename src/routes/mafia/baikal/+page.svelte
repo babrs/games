@@ -13,7 +13,7 @@
 </script>
 
 <svelte:head>
-	<title>Байкальская мафия — персонажи и правила | Babrs Games</title>
+	<title>Байкальская мафия — персонажи и правила | Babr Games</title>
 	<meta name="description" content={game.description} />
 </svelte:head>
 
