@@ -18,9 +18,7 @@
 	<meta name="keywords" content={game.keywords.join(', ')} />
 </svelte:head>
 
-<HeroBanner backgroundImage={game.heroImage} title={game.title} titleImage="{base}/images/dobble/baikal/title-baikal.webp" titleAlt="Байкал">
-	<p class="lead">{game.description}</p>
-</HeroBanner>
+<HeroBanner backgroundImage={game.heroImage} title="Добрый Доббль" titleImage="{base}/images/dobble/baikal/title-baikal.webp" titleAlt="Добрый Доббль Байкал" />
 
 <TabSwitcher
 	label="Разделы Добрый Доббль"
@@ -47,12 +45,6 @@
 {/if}
 
 <style>
-	.lead {
-		max-width: 60ch;
-		margin-inline: auto;
-		font-size: var(--font-size-lg);
-	}
-
 	.section {
 		display: grid;
 		gap: var(--space-lg);

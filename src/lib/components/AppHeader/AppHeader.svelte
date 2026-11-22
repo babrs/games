@@ -48,9 +48,9 @@
 			aria-expanded={menuOpen}
 			onclick={toggleMenu}
 		>
-			<span class="app-header__burger-line"></span>
-			<span class="app-header__burger-line"></span>
-			<span class="app-header__burger-line"></span>
+			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
+			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
+			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
 		</button>
 
 		<nav
@@ -161,6 +161,19 @@
 		height: 3px;
 		border-radius: var(--radius-pill);
 		background: currentColor;
+		transition: transform var(--duration-fast), opacity var(--duration-fast);
+	}
+
+	.app-header__burger-line_open:nth-child(1) {
+		transform: translateY(10.5px) rotate(45deg);
+	}
+
+	.app-header__burger-line_open:nth-child(2) {
+		opacity: 0;
+	}
+
+	.app-header__burger-line_open:nth-child(3) {
+		transform: translateY(-10.5px) rotate(-45deg);
 	}
 
 	.app-header__nav {

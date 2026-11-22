@@ -12,7 +12,7 @@
 	<meta name="description" content={rules.description} />
 </svelte:head>
 
-<HeroBanner backgroundImage={rules.heroImage} title="Добрый Доббль" titleImage="{base}/images/dobble/baikal/title-baikal.webp" titleAlt="Добрый Доббль" />
+<HeroBanner backgroundImage={rules.heroImage} title="Добрый Доббль" titleImage="{base}/images/dobble/baikal/title-baikal.webp" titleAlt="Добрый Доббль Байкал" />
 
 <TabSwitcher
 	label="Разделы Добрый Доббль"
