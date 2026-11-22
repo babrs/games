@@ -1,4 +1,7 @@
 <script>
+	import { outsideClick } from '$lib/attachments';
+	import { Logo } from '$lib/components';
+
 	/**
 	 * @typedef {Object} NavItem
 	 * @property {string} href - Ссылка
@@ -31,8 +34,11 @@
 <header class="app-header">
 	<div class="container app-header__inner">
 		<a class="app-header__brand" href={homeHref} onclick={closeMenu}>
-			<span class="app-header__title">{brand}</span>
-			{#if tagline}<span class="app-header__tagline">{tagline}</span>{/if}
+			<Logo class="app-header__logo" />
+			<div class="app-header__titles">
+				<span class="app-header__title">{brand}</span>
+				{#if tagline}<span class="app-header__tagline">{tagline}</span>{/if}
+			</div>
 		</a>
 
 		<button
@@ -47,7 +53,12 @@
 			<span class="app-header__burger-line"></span>
 		</button>
 
-		<nav class="app-header__nav" class:app-header__nav_open={menuOpen} aria-label="Основная навигация">
+		<nav
+			class="app-header__nav"
+			class:app-header__nav_open={menuOpen}
+			aria-label="Основная навигация"
+			{@attach outsideClick(closeMenu)}
+		>
 			{#each navItems as item (item.href)}
 				<a
 					class="app-header__link"
@@ -83,22 +94,36 @@
 
 	.app-header__brand {
 		display: flex;
-		align-items: baseline;
+		align-items: center;
 		gap: var(--space-sm);
 		color: var(--color-text);
 		text-decoration: none;
 	}
 
+	.app-header__logo {
+		width: 36px;
+		height: 36px;
+		flex-shrink: 0;
+	}
+
+	.app-header__titles {
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+	}
+
 	.app-header__title {
 		font-family: var(--font-display);
-		font-size: var(--font-size-lg);
+		font-size: var(--font-size-md);
 		font-weight: var(--font-weight-bold);
 		letter-spacing: -0.03em;
+		line-height: 1.2;
 	}
 
 	.app-header__tagline {
 		color: var(--color-text-muted);
 		font-size: var(--font-size-xs);
+		line-height: 1.2;
 	}
 
 	.app-header__burger {
