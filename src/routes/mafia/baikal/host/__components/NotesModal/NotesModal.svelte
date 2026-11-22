@@ -1,5 +1,5 @@
 <script>
-	import notesState from '$lib/stores';
+	import { notesState } from '$lib/stores';
 
 	/**
 	 * @typedef {Object} Props

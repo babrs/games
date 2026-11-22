@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
-	import gameState from '$lib/stores';
+	import { gameState } from '$lib/stores';
 	import SetupScreen from './__components/SetupScreen/index.js';
 	import GameScreen from './__components/GameScreen/index.js';
 	import '$lib/css/tokens/mafiaHostTokens/mafiaHostTokens.css';

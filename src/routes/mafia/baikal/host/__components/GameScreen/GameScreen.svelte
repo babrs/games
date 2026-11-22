@@ -2,7 +2,7 @@
 	import PlayerRow from '../PlayerRow/index.js';
 	import { ConfirmModal } from 'babrs-ui';
 	import NotesModal from '../NotesModal/index.js';
-	import gameState from '$lib/stores';
+	import { gameState } from '$lib/stores';
 	import roleMeta from '$lib/agnostic/js/roleMeta/index.js';
 	import charDesc from '$lib/agnostic/js/charDesc/index.js';
 	import phaseShort from '$lib/agnostic/js/phaseShort/index.js';

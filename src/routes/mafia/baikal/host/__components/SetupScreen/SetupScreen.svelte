@@ -1,6 +1,6 @@
 <script>
 	import { Stepper } from 'babrs-ui';
-	import gameState from '$lib/stores';
+	import { gameState } from '$lib/stores';
 
 	let predators = $state(3);
 	let peaceful = $state(5);
