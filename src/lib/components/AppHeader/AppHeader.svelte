@@ -25,8 +25,6 @@
 	let menuOpen = $state(false);
 
 	const currentPath = $derived(page.url.pathname);
-	const isDobble = $derived(currentPath.startsWith(`${base}/dobble`));
-	const isMafia = $derived(currentPath.startsWith(`${base}/mafia/baikal`));
 
 	function toggleMenu() {
 		menuOpen = !menuOpen;
@@ -88,7 +86,7 @@
 					{item.label}
 				</a>
 
-				{#if item.href.includes('/dobble') && isDobble}
+				{#if item.href.includes('/dobble')}
 					<div class="app-header__subnav">
 						<a
 							class="app-header__sublink"
@@ -109,7 +107,7 @@
 					</div>
 				{/if}
 
-				{#if item.href.includes('/mafia/baikal') && isMafia}
+				{#if item.href.includes('/mafia/baikal')}
 					<div class="app-header__subnav">
 						<a
 							class="app-header__sublink"

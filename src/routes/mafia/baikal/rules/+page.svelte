@@ -1,6 +1,5 @@
 <script>
 	import { base } from '$app/paths';
-	import { TabSwitcher } from 'babrs-ui';
 	import { HeroBanner } from '$lib/components';
 
 	let { data } = $props();
@@ -11,17 +10,16 @@
 	<meta name="description" content={data.rules.description} />
 </svelte:head>
 
-<HeroBanner backgroundImage={data.image} title="Байкальская мафия" titleAlt="Байкальская мафия" />
-
-<TabSwitcher
-	label="Разделы Байкальской мафии"
-	active="rules"
-	items={[
-		{ id: 'characters', href: `${base}/mafia/baikal/`, label: 'Персонажи' },
-		{ id: 'rules', href: `${base}/mafia/baikal/rules/`, label: 'Правила' },
-		{ id: 'host', href: `${base}/mafia/baikal/host/`, label: 'Приложение ведущего', external: true }
-	]}
-/>
+<HeroBanner backgroundImage={data.image} title="Байкальская мафия" titleAlt="Байкальская мафия">
+	<nav class="hero-menu" aria-label="Разделы Байкальской мафии">
+		<a class="hero-menu__item" href="{base}/mafia/baikal/">Персонажи</a>
+		<a class="hero-menu__item hero-menu__item_active" href="{base}/mafia/baikal/rules/">Правила</a>
+		<a class="hero-menu__item" href="{base}/mafia/baikal/host/">
+			<Logo class="hero-menu__logo" />
+			Приложение ведущего
+		</a>
+	</nav>
+</HeroBanner>
 
 <section class="container section" aria-labelledby="rules-title">
 	<h2 class="section__title" id="rules-title">{data.rules.title}</h2>
@@ -47,6 +45,41 @@
 </section>
 
 <style>
+	.hero-menu {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: var(--space-lg);
+		margin-top: var(--space-sm);
+	}
+
+	.hero-menu__item {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		color: rgba(255, 255, 255, 0.85);
+		font-family: var(--font-display);
+		font-size: var(--font-size-md);
+		font-weight: 600;
+		text-decoration: none;
+		padding-bottom: 3px;
+		border-bottom: 2px solid transparent;
+		transition: color var(--duration-fast), border-color var(--duration-fast);
+	}
+
+	.hero-menu__item:hover,
+	.hero-menu__item_active {
+		color: #fff;
+		border-bottom-color: var(--color-primary, #ff4400);
+	}
+
+	.hero-menu__logo {
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+	}
+
 	.section {
 		display: grid;
 		gap: var(--space-lg);
@@ -64,7 +97,7 @@
 	}
 
 	.rules-block__title {
-		pfont-size: var(--font-size-lg);
+		font-size: var(--font-size-lg);
 	}
 
 	.rules-block__list {

@@ -1,8 +1,7 @@
 <script>
 	import { base } from '$app/paths';
-	import { TabSwitcher, GalleryModal } from 'babrs-ui';
+	import { HeroBanner, Logo } from '$lib/components';
 	import { CardGrid } from '$lib/components';
-	import { HeroBanner } from '$lib/components';
 	import CharacterCard from './__components/CharacterCard/index.js';
 	import CharacterModal from './__components/CharacterModal/index.js';
 
@@ -17,17 +16,16 @@
 	<meta name="description" content={game.description} />
 </svelte:head>
 
-<HeroBanner backgroundImage={game.image} title={game.title} />
-
-<TabSwitcher
-	label="Разделы Байкальской мафии"
-	active="characters"
-	items={[
-		{ id: 'characters', href: `${base}/mafia/baikal/`, label: 'Персонажи' },
-		{ id: 'rules', href: `${base}/mafia/baikal/rules/`, label: 'Правила' },
-		{ id: 'host', href: `${base}/mafia/baikal/host/`, label: 'Приложение ведущего', external: true }
-	]}
-/>
+<HeroBanner backgroundImage={game.image} title={game.title}>
+	<nav class="hero-menu" aria-label="Разделы Байкальской мафии">
+		<a class="hero-menu__item hero-menu__item_active" href="{base}/mafia/baikal/">Персонажи</a>
+		<a class="hero-menu__item" href="{base}/mafia/baikal/rules/">Правила</a>
+		<a class="hero-menu__item" href="{base}/mafia/baikal/host/">
+			<Logo class="hero-menu__logo" />
+			Приложение ведущего
+		</a>
+	</nav>
+</HeroBanner>
 
 <section class="container section facts" aria-label="Главное об игре">
 	{#each game.facts as fact (fact.label)}
@@ -59,6 +57,41 @@
 {/if}
 
 <style>
+	.hero-menu {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: var(--space-lg);
+		margin-top: var(--space-sm);
+	}
+
+	.hero-menu__item {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.35rem;
+		color: rgba(255, 255, 255, 0.85);
+		font-family: var(--font-display);
+		font-size: var(--font-size-md);
+		font-weight: 600;
+		text-decoration: none;
+		padding-bottom: 3px;
+		border-bottom: 2px solid transparent;
+		transition: color var(--duration-fast), border-color var(--duration-fast);
+	}
+
+	.hero-menu__item:hover,
+	.hero-menu__item_active {
+		color: #fff;
+		border-bottom-color: var(--color-primary, #ff4400);
+	}
+
+	.hero-menu__logo {
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+	}
+
 	.section {
 		display: grid;
 		gap: var(--space-lg);
