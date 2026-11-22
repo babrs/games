@@ -34,7 +34,7 @@
 			alt={`Карточка «${character.name}»`}
 			width="600"
 			height="858"
-			loading={variant === 'large' ? 'eager' : 'lazy'}
+			loading="lazy"
 			decoding="async"
 		/>
 	</div>
@@ -45,48 +45,8 @@
 			{#if character.oneTime}<Badge>Один раз за игру</Badge>{/if}
 		</div>
 
-		{#if variant === 'large'}
-			<h2 class="character__title" id="character-title">{character.name}</h2>
-			{#if character.alias}<p class="character__alias">{character.alias}</p>{/if}
-			<dl class="character__facts">
-				<div>
-					<dt>Когда действует</dt>
-					<dd>{character.when}</dd>
-				</div>
-				<div>
-					<dt>Текст на карточке</dt>
-					<dd>{character.cardText}</dd>
-				</div>
-				<div>
-					<dt>Справка по правилам</dt>
-					<dd>{character.summary}</dd>
-				</div>
-			</dl>
-			{#if character.discrepancy}<p class="character__note">{character.discrepancy}</p>{/if}
-		{:else}
-		{#if variant === 'large'}
-			<h2 class="character__title" id="character-title">{character.name}</h2>
-			{#if character.alias}<p class="character__alias">{character.alias}</p>{/if}
-			<dl class="character__facts">
-				<div>
-					<dt>Когда действует</dt>
-					<dd>{character.when}</dd>
-				</div>
-				<div>
-					<dt>Текст на карточке</dt>
-					<dd>{character.cardText}</dd>
-				</div>
-				<div>
-					<dt>Справка по правилам</dt>
-					<dd>{character.summary}</dd>
-				</div>
-			</dl>
-			{#if character.discrepancy}<p class="character__note">{character.discrepancy}</p>{/if}
-		{:else}
-			<h3 class="character__title">{character.name}</h3>
-			<p class="character__when">{character.when}</p>
-		{/if}
-		{/if}
+		<h3 class="character__title">{character.name}</h3>
+		<p class="character__when">{character.when}</p>
 	</div>
 </article>
 
