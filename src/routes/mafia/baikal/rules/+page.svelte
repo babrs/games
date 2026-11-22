@@ -14,10 +14,7 @@
 	<nav class="hero-menu" aria-label="Разделы Байкальской мафии">
 		<a class="hero-menu__item" href="{base}/mafia/baikal/">Персонажи</a>
 		<a class="hero-menu__item hero-menu__item_active" href="{base}/mafia/baikal/rules/">Правила</a>
-		<a class="hero-menu__item" href="{base}/mafia/baikal/host/">
-			<Logo class="hero-menu__logo" />
-			Приложение ведущего
-		</a>
+		<a class="hero-menu__item" href="{base}/mafia/baikal/host/">Приложение ведущего</a>
 	</nav>
 </HeroBanner>
 
@@ -72,12 +69,6 @@
 	.hero-menu__item_active {
 		color: #fff;
 		border-bottom-color: var(--color-primary, #ff4400);
-	}
-
-	.hero-menu__logo {
-		width: 16px;
-		height: 16px;
-		flex-shrink: 0;
 	}
 
 	.section {
