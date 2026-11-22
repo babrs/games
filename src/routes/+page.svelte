@@ -1,6 +1,7 @@
 <script>
 	import { base } from '$app/paths';
-	import { Button, Card, HeroBanner } from 'babrs-ui';
+	import { Button, HeroBanner } from 'babrs-ui';
+	import Card from '$lib/svelte/ui/Card/index.js';
 	import gamesRegistry from '$lib/content/gamesRegistry';
 </script>
 
