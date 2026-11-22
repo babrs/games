@@ -3,7 +3,7 @@
 	 * @typedef {Object} Character
 	 * @property {string} id - Идентификатор персонажа
 	 * @property {string} name - Название на карточке
-	 * @property {string} image - Изображение карточки от корня сайта
+	 * @property {string} image - Изображение карточке от корня сайта
 	 * @property {'peaceful' | 'predator' | 'special'} team - Команда
 	 * @property {string} teamLabel - Подпись команды
 	 * @property {string} when - Когда действует
@@ -27,6 +27,16 @@
 		predator: 'character__team_predator',
 		special: 'character__team_special'
 	};
+
+	let cleanSummary = $derived(
+		character.summary
+			.replace(/^Мирный житель\.\s*/, '')
+			.replace(/^Хищник\.\s*/, '')
+			.replace(/^Особая роль\.\s*/, '')
+			.replace(/^Мирный житель\s*/, '')
+			.replace(/^Хищник\s*/, '')
+			.replace(/^Особая роль\s*/, '')
+	);
 </script>
 
 <article class="character">
@@ -45,7 +55,7 @@
 		<h3 class="character__title">{character.name}</h3>
 		<p class="character__when">
 			<span class="character__team {teamClasses[character.team]}">{character.teamLabel}</span>
-			{character.summary}
+			{cleanSummary}
 		</p>
 	</div>
 </article>
