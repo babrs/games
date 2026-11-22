@@ -359,19 +359,19 @@
 		font-weight: 600;
 		padding: 4px 10px;
 		border-radius: 20px;
-		background: rgba(0, 0, 0, 0.06);
+		background: var(--shade);
 		color: var(--text-secondary);
 	}
 	.phase-badge.night {
-		background: rgba(0, 122, 255, 0.12);
+		background: var(--tint-accent);
 		color: var(--accent);
 	}
 	.phase-badge.morning {
-		background: rgba(255, 149, 0, 0.15);
-		color: #ff9500;
+		background: var(--tint-eagle);
+		color: var(--color-primary-strong);
 	}
 	.phase-badge.day {
-		background: rgba(52, 199, 89, 0.15);
+		background: var(--tint-peaceful-strong);
 		color: var(--peaceful);
 	}
 
@@ -381,7 +381,7 @@
 	}
 
 	.menu-btn {
-		background: rgba(0, 0, 0, 0.05);
+		background: var(--shade);
 		border: none;
 		width: 36px;
 		height: 36px;
@@ -397,7 +397,7 @@
 		background: var(--surface);
 		border-radius: 14px;
 		min-width: 220px;
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+		box-shadow: var(--shadow-floating);
 		overflow: hidden;
 		z-index: 120;
 	}
@@ -411,7 +411,7 @@
 		font-size: 16px;
 		font-weight: 500;
 		color: var(--text);
-		border-bottom: 0.5px solid rgba(0, 0, 0, 0.06);
+		border-bottom: 0.5px solid var(--shade);
 	}
 	.menu-item:last-child {
 		border-bottom: none;
@@ -433,12 +433,12 @@
 		position: absolute;
 		inset: 10% 5%;
 		border-radius: 50%;
-		background: radial-gradient(circle, rgba(52, 199, 89, 0.22) 0%, transparent 70%);
+		background: var(--glow-peaceful);
 		animation: win-pulse 2.4s ease-in-out infinite;
 		pointer-events: none;
 	}
 	.win-screen.owl .win-burst {
-		background: radial-gradient(circle, rgba(175, 82, 222, 0.22) 0%, transparent 70%);
+		background: var(--glow-special);
 	}
 	.win-card {
 		position: relative;
@@ -447,7 +447,7 @@
 		border-radius: 20px;
 		padding: 28px 22px 22px;
 		text-align: center;
-		box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+		box-shadow: var(--shadow-md);
 		animation: win-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 	}
 	.win-emoji {
@@ -470,7 +470,7 @@
 		letter-spacing: -0.4px;
 		margin-bottom: 8px;
 		color: var(--peaceful);
-		background: linear-gradient(120deg, #34c759, #30d158, #64d2ff);
+		background: var(--grad-peaceful);
 		background-size: 200% 200%;
 		-webkit-background-clip: text;
 		background-clip: text;
@@ -478,7 +478,7 @@
 		animation: win-shine 3s ease-in-out infinite;
 	}
 	.win-screen.owl .win-title {
-		background: linear-gradient(120deg, #af52de, #bf5af2, #5e5ce6);
+		background: var(--grad-special);
 		background-size: 200% 200%;
 		-webkit-background-clip: text;
 		background-clip: text;
@@ -497,7 +497,7 @@
 		border: none;
 		border-radius: 14px;
 		background: var(--accent);
-		color: #fff;
+		color: var(--on-solid);
 		font-size: 17px;
 		font-weight: 600;
 	}
@@ -567,7 +567,7 @@
 		margin: 0 -4px;
 		padding-left: 4px;
 		padding-right: 4px;
-		border-bottom: 0.5px solid rgba(0, 0, 0, 0.06);
+		border-bottom: 0.5px solid var(--shade);
 	}
 
 	.phase-panel {
@@ -588,7 +588,7 @@
 		width: 36px;
 		height: 36px;
 		border-radius: 50%;
-		background: rgba(0, 0, 0, 0.04);
+		background: var(--shade-soft);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -613,26 +613,26 @@
 		font-weight: 700;
 		padding: 5px 12px;
 		border-radius: 20px;
-		color: #fff;
+		color: var(--on-solid);
 	}
 	.action-badge.attack {
 		background: var(--predator);
 	}
 	.action-badge.protect {
 		background: var(--spirit);
-		color: #003a4a;
+		color: var(--color-ink);
 	}
 	.action-badge.check {
 		background: var(--eagle);
-		color: #3a1f00;
+		color: var(--color-ink);
 	}
 	.action-badge.mute {
 		background: var(--mute);
-		color: #3a2e00;
+		color: var(--color-ink);
 	}
 	.action-badge.clean {
 		background: var(--gammarus);
-		color: #003a4a;
+		color: var(--color-ink);
 	}
 	.action-badge.gift {
 		background: var(--angara);
@@ -690,7 +690,7 @@
 		border-radius: 16px;
 		padding: 24px 20px 20px;
 		text-align: center;
-		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+		box-shadow: 0 4px 24px var(--shade);
 	}
 	.intermission-kicker {
 		font-size: 13px;
@@ -721,7 +721,7 @@
 		border: none;
 		border-radius: 14px;
 		background: var(--accent);
-		color: #fff;
+		color: var(--on-solid);
 		font-size: 17px;
 		font-weight: 600;
 	}
@@ -739,9 +739,9 @@
 		display: flex;
 		gap: 10px;
 		padding: 10px 16px max(12px, env(safe-area-inset-bottom));
-		background: rgba(245, 245, 247, 0.92);
+		background: var(--bg-glass);
 		backdrop-filter: blur(12px);
-		border-top: 0.5px solid rgba(0, 0, 0, 0.06);
+		border-top: 0.5px solid var(--shade);
 		z-index: 50;
 	}
 	.nav-btn {
@@ -751,12 +751,12 @@
 		border-radius: 12px;
 		font-size: 16px;
 		font-weight: 600;
-		background: rgba(0, 0, 0, 0.05);
+		background: var(--shade);
 		color: var(--text);
 	}
 	.nav-btn.primary {
 		background: var(--accent);
-		color: #fff;
+		color: var(--on-solid);
 	}
 	.nav-btn:disabled {
 		opacity: 0.35;
@@ -766,7 +766,7 @@
 	.modal-overlay {
 		position: fixed;
 		inset: 0;
-		background: rgba(0, 0, 0, 0.4);
+		background: var(--scrim);
 		z-index: 110;
 		display: flex;
 		align-items: flex-end;
@@ -793,7 +793,7 @@
 		font-weight: 700;
 	}
 	.modal-close {
-		background: rgba(0, 0, 0, 0.06);
+		background: var(--shade);
 		border: none;
 		width: 30px;
 		height: 30px;
@@ -808,8 +808,8 @@
 		line-height: 1.55;
 	}
 	.modal-body :global(.log-box) {
-		background: #1c1c1e;
-		color: #e5e5ea;
+		background: var(--color-ink);
+		color: var(--color-bg);
 		border-radius: var(--radius);
 		padding: 12px 14px;
 		font-family: 'SF Mono', Menlo, Consolas, monospace;

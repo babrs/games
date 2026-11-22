@@ -252,16 +252,16 @@
 	}
 
 	.player-row.faction-predator {
-		background: rgba(255, 59, 48, 0.08);
+		background: var(--tint-predator);
 	}
 	.player-row.faction-peaceful {
-		background: rgba(52, 199, 89, 0.08);
+		background: var(--tint-peaceful);
 	}
 	.player-row.faction-special {
-		background: rgba(175, 82, 222, 0.08);
+		background: var(--tint-special);
 	}
 	.player-row.faction-owl {
-		background: rgba(175, 82, 222, 0.12);
+		background: var(--tint-special-strong);
 	}
 	.player-row.dead {
 		opacity: 0.4;
@@ -285,7 +285,7 @@
 		width: 28px;
 		height: 28px;
 		border-radius: 50%;
-		background: rgba(0, 0, 0, 0.05);
+		background: var(--shade);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -300,7 +300,7 @@
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
-		border: 1.5px dashed rgba(0, 0, 0, 0.18);
+		border: 1.5px dashed var(--line-strong);
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -313,7 +313,7 @@
 	.player-avatar.filled {
 		border-style: solid;
 		border-color: transparent;
-		background: rgba(0, 0, 0, 0.04);
+		background: var(--shade-soft);
 	}
 	.player-avatar.locked {
 		cursor: default;
@@ -358,7 +358,7 @@
 		transform: scaleX(-1);
 	}
 	.edit-name-btn:active {
-		background: rgba(0, 0, 0, 0.06);
+		background: var(--shade);
 	}
 	.player-role {
 		font-size: 12px;
@@ -388,7 +388,7 @@
 		font-weight: 700;
 		padding: 3px 8px;
 		border-radius: 10px;
-		color: #fff;
+		color: var(--on-solid);
 		border: none;
 		white-space: nowrap;
 	}
@@ -397,19 +397,19 @@
 	}
 	.badge.protect {
 		background: var(--spirit);
-		color: #003a4a;
+		color: var(--color-ink);
 	}
 	.badge.check {
 		background: var(--eagle);
-		color: #3a1f00;
+		color: var(--color-ink);
 	}
 	.badge.mute {
 		background: var(--mute);
-		color: #3a2e00;
+		color: var(--color-ink);
 	}
 	.badge.clean {
 		background: var(--gammarus);
-		color: #003a4a;
+		color: var(--color-ink);
 	}
 	.badge.gift {
 		background: var(--angara);

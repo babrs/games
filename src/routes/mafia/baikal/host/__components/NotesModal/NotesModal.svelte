@@ -147,7 +147,7 @@
 	.notes-overlay {
 		position: fixed;
 		inset: 0;
-		background: rgba(0, 0, 0, 0.4);
+		background: var(--scrim);
 		z-index: 110;
 		display: flex;
 		align-items: flex-end;
@@ -180,7 +180,7 @@
 	}
 
 	.notes-close {
-		background: rgba(0, 0, 0, 0.06);
+		background: var(--shade);
 		border: none;
 		width: 30px;
 		height: 30px;
@@ -290,16 +290,16 @@
 
 	.btn-primary {
 		background: var(--accent);
-		color: #fff;
+		color: var(--on-solid);
 	}
 
 	.btn-secondary {
-		background: rgba(0, 0, 0, 0.06);
+		background: var(--shade);
 		color: var(--text);
 	}
 
 	.btn-danger {
-		background: rgba(255, 59, 48, 0.12);
+		background: var(--tint-predator-strong);
 		color: var(--predator);
 	}
 

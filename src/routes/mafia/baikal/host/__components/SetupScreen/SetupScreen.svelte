@@ -177,7 +177,7 @@
 		display: flex;
 		align-items: center;
 		padding: 13px 16px;
-		border-bottom: 0.5px solid rgba(0, 0, 0, 0.06);
+		border-bottom: 0.5px solid var(--shade);
 		cursor: pointer;
 		user-select: none;
 	}
@@ -222,14 +222,14 @@
 		width: 100%;
 		padding: 16px;
 		background: var(--accent);
-		color: #fff;
+		color: var(--on-solid);
 		border: none;
 		border-radius: 14px;
 		font-size: 17px;
 		font-weight: 600;
 	}
 	.primary-btn.secondary {
-		background: rgba(0, 0, 0, 0.08);
+		background: var(--shade-strong);
 		color: var(--text);
 	}
 	.primary-btn:active {

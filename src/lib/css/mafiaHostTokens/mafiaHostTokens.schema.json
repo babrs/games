@@ -2,23 +2,221 @@
   "name": "MafiaHostTokens",
   "type": "design-tokens",
   "framework": "css-variables",
-  "description": "Токены приложения ведущего Байкальской мафии: цвета ролей, фон, радиусы и высота панели навигации.",
+  "description": "Токены ведущего Байкальской мафии. Цвета ссылаются на палитру babrs-ui, хардкода нет.",
   "categories": {
     "colors": {
-      "description": "Фон, текст и цвета команд и ролей",
+      "description": "Фон, текст, акцент и подложки",
       "tokens": {
-        "--text": { "value": "var(--color-text)", "type": "color", "description": "Основной текст" },
-        "--surface": { "value": "var(--color-surface)", "type": "color", "description": "Фон карточек" },
-        "--predator": { "value": "#ff3b30", "type": "color", "description": "Хищники" },
-        "--peaceful": { "value": "#34c759", "type": "color", "description": "Мирные" },
-        "--special": { "value": "#af52de", "type": "color", "description": "Особые роли" }
+        "--bg": {
+          "value": "var(--color-bg)",
+          "type": "color",
+          "description": "Фон экрана"
+        },
+        "--surface": {
+          "value": "var(--color-surface)",
+          "type": "color",
+          "description": "Фон карточек и панелей"
+        },
+        "--text": {
+          "value": "var(--color-text)",
+          "type": "color",
+          "description": "Основной текст"
+        },
+        "--text-secondary": {
+          "value": "var(--color-text-muted)",
+          "type": "color",
+          "description": "Вторичный текст"
+        },
+        "--accent": {
+          "value": "var(--color-primary)",
+          "type": "color",
+          "description": "Акцент: кнопки и активные элементы"
+        },
+        "--on-solid": {
+          "value": "var(--color-on-primary)",
+          "type": "color",
+          "description": "Текст на сплошных цветных фонах"
+        },
+        "--dead-bg": {
+          "value": "var(--shade-soft)",
+          "type": "color",
+          "description": "Фон выбывших игроков"
+        },
+        "--bg-glass": {
+          "value": "color-mix(in srgb, var(--color-bg) 92%, transparent)",
+          "type": "color",
+          "description": "Полупрозрачная нижняя панель"
+        },
+        "--shade-soft": {
+          "value": "color-mix(in srgb, var(--color-text) 4%, transparent)",
+          "type": "color",
+          "description": "Очень светлая подложка"
+        },
+        "--shade": {
+          "value": "color-mix(in srgb, var(--color-text) 6%, transparent)",
+          "type": "color",
+          "description": "Подложка наведения и разделители"
+        },
+        "--shade-strong": {
+          "value": "color-mix(in srgb, var(--color-text) 8%, transparent)",
+          "type": "color",
+          "description": "Подложка активных элементов"
+        },
+        "--line-strong": {
+          "value": "color-mix(in srgb, var(--color-text) 18%, transparent)",
+          "type": "color",
+          "description": "Пунктирная граница пустых слотов"
+        },
+        "--scrim": {
+          "value": "color-mix(in srgb, var(--color-text) 40%, transparent)",
+          "type": "color",
+          "description": "Затемнение под модальными окнами"
+        }
+      }
+    },
+    "roles": {
+      "description": "Цвета ролей и фракций",
+      "tokens": {
+        "--predator": {
+          "value": "var(--color-danger)",
+          "type": "color",
+          "description": "Хищники (мафия)"
+        },
+        "--peaceful": {
+          "value": "var(--color-success)",
+          "type": "color",
+          "description": "Мирные жители"
+        },
+        "--special": {
+          "value": "var(--color-info)",
+          "type": "color",
+          "description": "Особые роли: фракция"
+        },
+        "--spirit": {
+          "value": "var(--color-sky)",
+          "type": "color",
+          "description": "Дух Байкала"
+        },
+        "--eagle": {
+          "value": "var(--color-accent)",
+          "type": "color",
+          "description": "Орлан-белохвост"
+        },
+        "--fox": {
+          "value": "var(--color-warning)",
+          "type": "color",
+          "description": "Лиса"
+        },
+        "--vole": {
+          "value": "var(--color-rose)",
+          "type": "color",
+          "description": "Ольхонская полёвка"
+        },
+        "--gammarus": {
+          "value": "var(--color-sky-deep)",
+          "type": "color",
+          "description": "Гаммарус"
+        },
+        "--angara": {
+          "value": "var(--color-info)",
+          "type": "color",
+          "description": "Ангара"
+        },
+        "--mute": {
+          "value": "var(--color-sand)",
+          "type": "color",
+          "description": "Молчит (бейдж)"
+        },
+        "--exile": {
+          "value": "var(--color-text-muted)",
+          "type": "color",
+          "description": "Изгнан (бейдж)"
+        }
+      }
+    },
+    "effects": {
+      "description": "Тинты, свечения и градиенты",
+      "tokens": {
+        "--tint-predator": {
+          "value": "color-mix(in srgb, var(--predator) 8%, transparent)",
+          "type": "color",
+          "description": "Тинт фракции хищников"
+        },
+        "--tint-predator-strong": {
+          "value": "color-mix(in srgb, var(--predator) 12%, transparent)",
+          "type": "color",
+          "description": "Усиленный тинт хищников"
+        },
+        "--tint-peaceful": {
+          "value": "color-mix(in srgb, var(--peaceful) 8%, transparent)",
+          "type": "color",
+          "description": "Тинт фракции мирных"
+        },
+        "--tint-peaceful-strong": {
+          "value": "color-mix(in srgb, var(--peaceful) 15%, transparent)",
+          "type": "color",
+          "description": "Усиленный тинт мирных"
+        },
+        "--tint-special": {
+          "value": "color-mix(in srgb, var(--special) 8%, transparent)",
+          "type": "color",
+          "description": "Тинт особых ролей"
+        },
+        "--tint-special-strong": {
+          "value": "color-mix(in srgb, var(--special) 12%, transparent)",
+          "type": "color",
+          "description": "Усиленный тинт особых ролей"
+        },
+        "--tint-accent": {
+          "value": "color-mix(in srgb, var(--accent) 12%, transparent)",
+          "type": "color",
+          "description": "Тинт акцента"
+        },
+        "--tint-eagle": {
+          "value": "color-mix(in srgb, var(--eagle) 15%, transparent)",
+          "type": "color",
+          "description": "Тинт орлана"
+        },
+        "--glow-peaceful": {
+          "value": "radial-gradient(circle, color-mix(in srgb, var(--peaceful) 22%, transparent) 0%, transparent 70%)",
+          "type": "gradient",
+          "description": "Радиальное свечение мирных"
+        },
+        "--glow-special": {
+          "value": "radial-gradient(circle, color-mix(in srgb, var(--special) 22%, transparent) 0%, transparent 70%)",
+          "type": "gradient",
+          "description": "Радиальное свечение особых ролей"
+        },
+        "--grad-peaceful": {
+          "value": "linear-gradient(120deg, var(--peaceful), var(--peaceful), var(--gammarus))",
+          "type": "gradient",
+          "description": "Градиент победы мирных"
+        },
+        "--grad-special": {
+          "value": "linear-gradient(120deg, var(--special), var(--gammarus), var(--angara))",
+          "type": "gradient",
+          "description": "Градиент победы особых ролей"
+        }
       }
     },
     "geometry": {
-      "description": "Скругления и высота панели",
+      "description": "Скругление, шрифт и высота панели",
       "tokens": {
-        "--radius": { "value": "var(--radius-md)", "type": "dimension", "description": "Скругление карточек" },
-        "--nav-h": { "value": "64px", "type": "dimension", "description": "Высота нижней панели" }
+        "--radius": {
+          "value": "var(--radius-md)",
+          "type": "dimension",
+          "description": "Скругление карточек"
+        },
+        "--font": {
+          "value": "-apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
+          "type": "font-family",
+          "description": "Шрифт интерфейса"
+        },
+        "--nav-h": {
+          "value": "64px",
+          "type": "dimension",
+          "description": "Высота нижней панели"
+        }
       }
     }
   }

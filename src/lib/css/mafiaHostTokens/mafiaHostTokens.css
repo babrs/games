@@ -4,20 +4,43 @@
 	--text: var(--color-text);
 	--text-secondary: var(--color-text-muted);
 	--accent: var(--color-primary);
-	--predator: #ff3b30;
-	--peaceful: #34c759;
-	--special: #af52de;
-	--spirit: #5ac8fa;
-	--eagle: #ff9500;
-	--fox: #ff9f0a;
-	--vole: #bf5af2;
-	--gammarus: #64d2ff;
-	--angara: #0a84ff;
-	--mute: #ffd60a;
-	--exile: #8e8e93;
-	--dead-bg: rgba(0, 0, 0, 0.04);
+	--on-solid: var(--color-on-primary);
+	--dead-bg: var(--shade-soft);
 	--radius: var(--radius-md);
-	--font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial,
-		sans-serif;
+	--font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 	--nav-h: 64px;
+	--bg-glass: color-mix(in srgb, var(--color-bg) 92%, transparent);
+
+	--shade-soft: color-mix(in srgb, var(--color-text) 4%, transparent);
+	--shade: color-mix(in srgb, var(--color-text) 6%, transparent);
+	--shade-strong: color-mix(in srgb, var(--color-text) 8%, transparent);
+	--line-strong: color-mix(in srgb, var(--color-text) 18%, transparent);
+	--scrim: color-mix(in srgb, var(--color-text) 40%, transparent);
+
+	/* В палитре good-dobble нет фиолетового: особые роли на info */
+	--predator: var(--color-danger);
+	--peaceful: var(--color-success);
+	--special: var(--color-info);
+	--spirit: var(--color-sky);
+	--eagle: var(--color-accent);
+	--fox: var(--color-warning);
+	--vole: var(--color-rose);
+	--gammarus: var(--color-sky-deep);
+	--angara: var(--color-info);
+	--mute: var(--color-sand);
+	--exile: var(--color-text-muted);
+
+	--tint-predator: color-mix(in srgb, var(--predator) 8%, transparent);
+	--tint-predator-strong: color-mix(in srgb, var(--predator) 12%, transparent);
+	--tint-peaceful: color-mix(in srgb, var(--peaceful) 8%, transparent);
+	--tint-peaceful-strong: color-mix(in srgb, var(--peaceful) 15%, transparent);
+	--tint-special: color-mix(in srgb, var(--special) 8%, transparent);
+	--tint-special-strong: color-mix(in srgb, var(--special) 12%, transparent);
+	--tint-accent: color-mix(in srgb, var(--accent) 12%, transparent);
+	--tint-eagle: color-mix(in srgb, var(--eagle) 15%, transparent);
+
+	--glow-peaceful: radial-gradient(circle, color-mix(in srgb, var(--peaceful) 22%, transparent) 0%, transparent 70%);
+	--glow-special: radial-gradient(circle, color-mix(in srgb, var(--special) 22%, transparent) 0%, transparent 70%);
+	--grad-peaceful: linear-gradient(120deg, var(--peaceful), var(--peaceful), var(--gammarus));
+	--grad-special: linear-gradient(120deg, var(--special), var(--gammarus), var(--angara));
 }
