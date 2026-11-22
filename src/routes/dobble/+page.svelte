@@ -1,6 +1,8 @@
 <script>
 	import { base } from '$app/paths';
-	import { CardGrid, GalleryModal, HeroBanner, TabSwitcher } from 'babrs-ui';
+	import { GalleryModal, TabSwitcher } from 'babrs-ui';
+	import CardGrid from '$lib/svelte/ui/CardGrid/index.js';
+	import HeroBanner from '$lib/svelte/ui/HeroBanner/index.js';;
 	import SymbolPreview from './__components/SymbolPreview/index.js';
 
 	let { data } = $props();

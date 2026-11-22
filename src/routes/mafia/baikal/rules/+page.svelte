@@ -1,6 +1,7 @@
 <script>
 	import { base } from '$app/paths';
-	import { Button, HeroBanner } from 'babrs-ui';
+	import { Button } from 'babrs-ui';
+	import HeroBanner from '$lib/svelte/ui/HeroBanner/index.js';;
 
 	let { data } = $props();
 </script>

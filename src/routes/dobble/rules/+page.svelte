@@ -1,6 +1,7 @@
 <script>
 	import { base } from '$app/paths';
-	import { HeroBanner, TabSwitcher } from 'babrs-ui';
+	import { TabSwitcher } from 'babrs-ui';
+	import HeroBanner from '$lib/svelte/ui/HeroBanner/index.js';;
 
 	let { data } = $props();
 	const rules = $derived(data.rules);
