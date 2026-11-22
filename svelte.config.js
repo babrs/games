@@ -1,12 +1,9 @@
 import adapter from '@sveltejs/adapter-static';
 
-const dev = process.argv.includes('dev');
-
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter({ pages: 'build', assets: 'build', strict: true }),
-		paths: { base: dev ? '' : '/games' }
+		adapter: adapter({ pages: 'build', assets: 'build', strict: true })
 	}
 };
 

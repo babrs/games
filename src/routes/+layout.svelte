@@ -20,7 +20,7 @@
 	<link rel="icon" href="{base}/favicon.svg" type="image/svg+xml" />
 </svelte:head>
 
-<AppHeader brand="Babrs Games" logoSrc="{base}/assets/logo/logo.svg" tagline="игры для семьи" homeHref="{base}/" {navItems} />
+<AppHeader brand="Babrs Games" tagline="игры для семьи" homeHref="{base}/" {navItems} />
 
 <main>
 	{@render children()}
