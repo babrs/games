@@ -1,7 +1,7 @@
 <script>
 	import { base } from '$app/paths';
 	import { TabSwitcher, GalleryModal } from 'babrs-ui';
-	import { CardGrid, Logo } from '$lib/components';
+	import { CardGrid } from '$lib/components';
 	import { HeroBanner } from '$lib/components';
 	import CharacterCard from './__components/CharacterCard/index.js';
 	import CharacterModal from './__components/CharacterModal/index.js';
@@ -19,22 +19,15 @@
 
 <HeroBanner backgroundImage={game.image} title={game.title} />
 
-<div class="custom-tab-wrapper">
-	<div class="container">
-		<nav class="custom-tabs" aria-label="Разделы Байкальской мафии">
-			<a class="custom-tab" class:active={true} href="{base}/mafia/baikal/">
-				Персонажи
-			</a>
-			<a class="custom-tab" href="{base}/mafia/baikal/rules/">
-				Правила
-			</a>
-			<a class="custom-tab custom-tab--host" href="{base}/mafia/baikal/host/">
-				<Logo class="custom-tab__logo" />
-				Приложение ведущего
-			</a>
-		</nav>
-	</div>
-</div>
+<TabSwitcher
+	label="Разделы Байкальской мафии"
+	active="characters"
+	items={[
+		{ id: 'characters', href: `${base}/mafia/baikal/`, label: 'Персонажи' },
+		{ id: 'rules', href: `${base}/mafia/baikal/rules/`, label: 'Правила' },
+		{ id: 'host', href: `${base}/mafia/baikal/host/`, label: 'Приложение ведущего', external: true }
+	]}
+/>
 
 <section class="container section facts" aria-label="Главное об игре">
 	{#each game.facts as fact (fact.label)}
@@ -66,45 +59,6 @@
 {/if}
 
 <style>
-	.custom-tab-wrapper {
-		border-bottom: 1px solid var(--color-border);
-		background: var(--color-surface);
-	}
-
-	.custom-tabs {
-		display: flex;
-		justify-content: center;
-		gap: var(--space-sm);
-		padding-block: var(--space-sm);
-		overflow-x: auto;
-	}
-
-	.custom-tab {
-		display: inline-flex;
-		align-items: center;
-		gap: var(--space-xs);
-		padding: 0.5rem 1rem;
-		border-radius: var(--radius-pill);
-		color: var(--color-text-muted);
-		font-size: var(--font-size-sm);
-		font-weight: var(--font-weight-bold);
-		text-decoration: none;
-		transition: color var(--duration-fast), background var(--duration-fast);
-		white-space: nowrap;
-	}
-
-	.custom-tab:hover,
-	.custom-tab.active {
-		color: var(--color-primary);
-		background: var(--color-primary-glow);
-	}
-
-	.custom-tab__logo {
-		width: 18px;
-		height: 18px;
-		flex-shrink: 0;
-	}
-
 	.section {
 		display: grid;
 		gap: var(--space-lg);
