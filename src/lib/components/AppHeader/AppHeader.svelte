@@ -58,88 +58,88 @@
 			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
 			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
 		</button>
-
-		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<!-- svelte-ignore a11y_click_events_have_key_events -->
-		<div
-			class="app-header__overlay"
-			class:app-header__overlay_open={menuOpen}
-			onclick={closeMenu}
-		></div>
-
-		<nav
-			class="app-header__nav"
-			class:app-header__nav_open={menuOpen}
-			aria-label="Основная навигация"
-			{@attach outsideClick(closeMenu, { ignore: '.app-header__burger' })}
-		>
-			<div class="app-header__nav-inner">
-				{#each navItems as item (item.href)}
-					<div class="app-header__nav-item-group">
-						<a
-							class="app-header__link"
-							class:app-header__link_current={item.current}
-							href={item.href}
-							aria-current={item.current ? 'page' : undefined}
-							onclick={closeMenu}
-						>
-							{item.label}
-						</a>
-
-						{#if item.href.includes('/dobble') && isDobble}
-							<div class="app-header__subnav">
-								<a
-									class="app-header__sublink"
-									class:app-header__sublink_current={currentPath === `${base}/dobble/` || currentPath === `${base}/dobble`}
-									href="{base}/dobble/"
-									onclick={closeMenu}
-								>
-									Символы
-								</a>
-								<a
-									class="app-header__sublink"
-									class:app-header__sublink_current={currentPath.startsWith(`${base}/dobble/rules`)}
-									href="{base}/dobble/rules/"
-									onclick={closeMenu}
-								>
-									Правила
-								</a>
-							</div>
-						{/if}
-
-						{#if item.href.includes('/mafia/baikal') && isMafia}
-							<div class="app-header__subnav">
-								<a
-									class="app-header__sublink"
-									class:app-header__sublink_current={currentPath === `${base}/mafia/baikal/` || currentPath === `${base}/mafia/baikal`}
-									href="{base}/mafia/baikal/"
-									onclick={closeMenu}
-								>
-									Персонажи
-								</a>
-								<a
-									class="app-header__sublink"
-									class:app-header__sublink_current={currentPath.startsWith(`${base}/mafia/baikal/rules`)}
-									href="{base}/mafia/baikal/rules/"
-									onclick={closeMenu}
-								>
-									Правила
-								</a>
-								<a
-									class="app-header__sublink"
-									href="{base}/mafia/baikal/host/"
-									onclick={closeMenu}
-								>
-									Приложение ведущего
-								</a>
-							</div>
-						{/if}
-					</div>
-				{/each}
-			</div>
-		</nav>
 	</div>
 </header>
+
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<div
+	class="app-header__overlay"
+	class:app-header__overlay_open={menuOpen}
+	onclick={closeMenu}
+></div>
+
+<nav
+	class="app-header__nav"
+	class:app-header__nav_open={menuOpen}
+	aria-label="Основная навигация"
+	{@attach outsideClick(closeMenu, { ignore: '.app-header__burger' })}
+>
+	<div class="app-header__nav-inner">
+		{#each navItems as item (item.href)}
+			<div class="app-header__nav-item-group">
+				<a
+					class="app-header__link"
+					class:app-header__link_current={item.current}
+					href={item.href}
+					aria-current={item.current ? 'page' : undefined}
+					onclick={closeMenu}
+				>
+					{item.label}
+				</a>
+
+				{#if item.href.includes('/dobble') && isDobble}
+					<div class="app-header__subnav">
+						<a
+							class="app-header__sublink"
+							class:app-header__sublink_current={currentPath === `${base}/dobble/` || currentPath === `${base}/dobble`}
+							href="{base}/dobble/"
+							onclick={closeMenu}
+						>
+							Символы
+						</a>
+						<a
+							class="app-header__sublink"
+							class:app-header__sublink_current={currentPath.startsWith(`${base}/dobble/rules`)}
+							href="{base}/dobble/rules/"
+							onclick={closeMenu}
+						>
+							Правила
+						</a>
+					</div>
+				{/if}
+
+				{#if item.href.includes('/mafia/baikal') && isMafia}
+					<div class="app-header__subnav">
+						<a
+							class="app-header__sublink"
+							class:app-header__sublink_current={currentPath === `${base}/mafia/baikal/` || currentPath === `${base}/mafia/baikal`}
+							href="{base}/mafia/baikal/"
+							onclick={closeMenu}
+						>
+							Персонажи
+						</a>
+						<a
+							class="app-header__sublink"
+							class:app-header__sublink_current={currentPath.startsWith(`${base}/mafia/baikal/rules`)}
+							href="{base}/mafia/baikal/rules/"
+							onclick={closeMenu}
+						>
+							Правила
+						</a>
+						<a
+							class="app-header__sublink"
+							href="{base}/mafia/baikal/host/"
+							onclick={closeMenu}
+						>
+							Приложение ведущего
+						</a>
+					</div>
+				{/if}
+			</div>
+		{/each}
+	</div>
+</nav>
 
 <style>
 	.app-header {
@@ -298,7 +298,7 @@
 			opacity: 0;
 			visibility: hidden;
 			transition: opacity 300ms ease, visibility 300ms ease;
-			z-index: 99;
+			z-index: 104;
 		}
 
 		.app-header__overlay_open {
@@ -314,14 +314,14 @@
 			width: min(80vw, 300px);
 			display: flex;
 			flex-direction: column;
-			padding: calc(var(--space-xl) + 1rem) var(--space-lg) var(--space-xl);
+			padding: calc(var(--space-xl) + 2rem) var(--space-lg) var(--space-xl);
 			background: var(--color-surface);
 			color: var(--color-text);
 			box-shadow: -8px 0 32px rgba(0, 0, 0, 0.25);
 			transform: translateX(100%);
 			visibility: hidden;
 			transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), visibility 300ms ease;
-			z-index: 100;
+			z-index: 105;
 			overflow-y: auto;
 		}
 
