@@ -1,9 +1,7 @@
 <script>
 	import { base } from '$app/paths';
-	import { Button } from 'babrs-ui';
+	import { TabSwitcher } from 'babrs-ui';
 	import { HeroBanner } from '$lib/components';;
-
-	let { data } = $props();
 </script>
 
 <svelte:head>
@@ -11,13 +9,17 @@
 	<meta name="description" content={data.rules.description} />
 </svelte:head>
 
-<HeroBanner backgroundImage={data.image} title="Байкальская мафия" titleAlt="Байкальская мафия">
-	<p class="lead">Правила для игроков и ведущего: цель, роли, порядок ночи и дня, победа и баланс.</p>
-	<div class="hero-actions">
-		<Button variant="secondary" href="{base}/mafia/baikal/">К персонажам</Button>
-		<Button href="{base}/mafia/baikal/host/" target="_blank" rel="noopener noreferrer">Приложение ведущего</Button>
-	</div>
-</HeroBanner>
+<HeroBanner backgroundImage={data.image} title="Байкальская мафия" titleAlt="Байкальская мафия" />
+
+<TabSwitcher
+	label="Разделы Байкальская мафия"
+	active="rules"
+	items={[
+		{ id: 'characters', href: `${base}/mafia/baikal/`, label: 'Персонажи' },
+		{ id: 'rules', href: `${base}/mafia/baikal/rules/`, label: 'Правила' },
+		{ id: 'host', href: `${base}/mafia/baikal/host/`, label: 'Приложение ведущего' }
+	]}
+/>
 
 <section class="container section" aria-labelledby="rules-title">
 	<h2 class="section__title" id="rules-title">{data.rules.title}</h2>
@@ -43,19 +45,6 @@
 </section>
 
 <style>
-	.lead {
-		max-width: 60ch;
-		margin-inline: auto;
-		font-size: var(--font-size-lg);
-	}
-
-	.hero-actions {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: var(--space-md);
-	}
-
 	.section {
 		display: grid;
 		gap: var(--space-lg);

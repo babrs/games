@@ -1,6 +1,6 @@
 <script>
 	import { base } from '$app/paths';
-	import { Button, GalleryModal } from 'babrs-ui';
+	import { TabSwitcher } from 'babrs-ui';
 	import { CardGrid } from '$lib/components';
 	import { HeroBanner } from '$lib/components';;
 	import CharacterCard from './__components/CharacterCard/index.js';
@@ -18,6 +18,16 @@
 </svelte:head>
 
 <HeroBanner backgroundImage={game.image} title={game.title} />
+
+<TabSwitcher
+	label="Разделы Байкальская мафия"
+	active="characters"
+	items={[
+		{ id: 'characters', href: `${base}/mafia/baikal/`, label: 'Персонажи' },
+		{ id: 'rules', href: `${base}/mafia/baikal/rules/`, label: 'Правила' },
+		{ id: 'host', href: `${base}/mafia/baikal/host/`, label: 'Приложение ведущего' }
+	]}
+/>
 
 <section class="container section facts" aria-label="Главное об игре">
 	{#each game.facts as fact (fact.label)}
@@ -49,19 +59,6 @@
 {/if}
 
 <style>
-	.lead {
-		max-width: 60ch;
-		margin-inline: auto;
-		font-size: var(--font-size-lg);
-	}
-
-	.hero-actions {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: var(--space-md);
-	}
-
 	.section {
 		display: grid;
 		gap: var(--space-lg);
