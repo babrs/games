@@ -92,12 +92,7 @@
 			box-shadow 350ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
-	.app-header.is-sticky {
-		position: fixed;
-		top: 0;
-	}
-
-	.app-header.is-scrolled {
+	.app-header:global(.is-solid) {
 		border-bottom-color: var(--color-border);
 		background: color-mix(in srgb, var(--color-surface) 92%, transparent);
 		backdrop-filter: blur(12px);
@@ -105,7 +100,7 @@
 		box-shadow: var(--shadow-sm);
 	}
 
-	.app-header.is-hidden {
+	.app-header:global(.is-hidden) {
 		transform: translateY(-100%);
 	}
 

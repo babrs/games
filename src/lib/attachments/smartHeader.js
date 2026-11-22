@@ -1,44 +1,36 @@
-export function smartHeader(node, { topOffset = 20 } = {}) {
-	let lastScrollY = window.scrollY;
-	let ticking = false;
+export function smartHeader(node, { topOffset = 0, hideAfter } = {}) {
+	let lastY = window.scrollY;
+	let frame = 0;
 
 	function update() {
-		const currentY = window.scrollY;
-		const headerHeight = node.offsetHeight || 72;
+		frame = 0;
+		const y = window.scrollY;
+		const threshold = hideAfter ?? node.offsetHeight;
 
-		if (currentY <= topOffset) {
-			// На самом верху: абсолютно прозрачный, привязан к верху
-			node.classList.remove('is-scrolled', 'is-hidden', 'is-sticky');
-			node.style.transform = 'translateY(0)';
-		} else if (currentY > lastScrollY && currentY > headerHeight) {
-			// Скроллим вниз: плавно скрываем хэдер за пределы экрана БЕЗ смены фона во время ухода
+		if (y <= topOffset) {
+			node.classList.remove('is-solid', 'is-hidden');
+		} else if (y > lastY && y > threshold) {
+			node.classList.remove('is-solid');
 			node.classList.add('is-hidden');
-			node.classList.remove('is-sticky');
-			node.style.transform = `translateY(-100%)`;
-		} else if (currentY < lastScrollY) {
-			// Скроллим вверх: выезжает хэдер со светлым фоном и тенями
-			node.classList.add('is-sticky', 'is-scrolled');
+		} else if (y < lastY) {
 			node.classList.remove('is-hidden');
-			node.style.transform = 'translateY(0)';
+			node.classList.add('is-solid');
 		}
 
-		lastScrollY = currentY;
-		ticking = false;
+		lastY = y;
 	}
 
 	function onScroll() {
-		if (!ticking) {
-			window.requestAnimationFrame(update);
-			ticking = true;
-		}
+		if (!frame) frame = requestAnimationFrame(update);
 	}
 
-	window.addEventListener('scroll', onScroll, { passive: true });
 	update();
+	window.addEventListener('scroll', onScroll, { passive: true });
 
 	return {
 		destroy() {
 			window.removeEventListener('scroll', onScroll);
+			cancelAnimationFrame(frame);
 		}
 	};
 }
