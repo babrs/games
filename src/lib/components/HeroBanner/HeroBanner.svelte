@@ -19,7 +19,6 @@
 			<img class="hero__image" src={titleImage} alt={titleAlt} />
 		{/if}
 		<h1 id="hero-title" class="hero__title" class:u-visually-hidden={Boolean(titleImage)}>{title}</h1>
-		{@render children?.()}
 	</div>
 </section>
 

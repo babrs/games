@@ -25,6 +25,13 @@
 	let scrollDir = $state('up');
 	let lastScrollY = 0;
 
+	$effect(() => {
+		if (typeof window !== 'undefined') {
+			lastScrollY = window.scrollY;
+			scrolled = lastScrollY > 20;
+		}
+	});
+
 	function toggleMenu() {
 		menuOpen = !menuOpen;
 	}
@@ -35,8 +42,13 @@
 
 	function handleScroll() {
 		const currentY = window.scrollY;
-		scrolled = currentY > 60;
-		scrollDir = currentY > lastScrollY && currentY > 120 ? 'down' : 'up';
+		scrolled = currentY > 20;
+		if (currentY > lastScrollY && currentY > 80) {
+			scrollDir = 'down';
+			closeMenu();
+		} else if (currentY < lastScrollY) {
+			scrollDir = 'up';
+		}
 		lastScrollY = currentY;
 	}
 </script>
@@ -60,9 +72,9 @@
 			aria-expanded={menuOpen}
 			onclick={toggleMenu}
 		>
-			<span class="app-header__burger-line"></span>
-			<span class="app-header__burger-line"></span>
-			<span class="app-header__burger-line"></span>
+			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
+			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
+			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
 		</button>
 
 		<nav
@@ -104,7 +116,7 @@
 
 	.app-header_scrolled {
 		border-bottom-color: var(--color-border);
-		background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+		background: color-mix(in srgb, var(--color-surface) 92%, transparent);
 		backdrop-filter: blur(12px);
 		color: var(--color-text);
 		box-shadow: var(--shadow-sm);

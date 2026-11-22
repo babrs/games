@@ -23,7 +23,7 @@
 </HeroBanner>
 
 <TabSwitcher
-	label="Разделы Good Dobble"
+	label="Разделы Добрый Доббль"
 	active="symbols"
 	items={[
 		{ id: 'symbols', href: `${base}/dobble/`, label: 'Символы' },
