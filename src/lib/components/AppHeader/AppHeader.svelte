@@ -1,4 +1,6 @@
 <script>
+	import Logo from '../Logo/index.js';
+
 	/**
 	 * @typedef {Object} NavItem
 	 * @property {string} href - Адрес ссылки
@@ -9,7 +11,6 @@
 	/**
 	 * @typedef {Object} Props
 	 * @property {string} brand - Название проекта
-	 * @property {string} logoSrc - Путь к логотипу
 	 * @property {string} [tagline] - Подпись под названием
 	 * @property {string} [homeHref] - Адрес логотипа
 	 * @property {NavItem[]} [navItems] - Пункты навигации
@@ -17,7 +18,7 @@
 	 */
 
 	/** @type {Props} */
-	let { brand, logoSrc, tagline = '', homeHref = '/', navItems = [], hideOnScroll = true } = $props();
+	let { brand, tagline = '', homeHref = '/', navItems = [], hideOnScroll = true } = $props();
 
 	let hidden = $state(false);
 	let scrolled = $state(false);
@@ -54,7 +55,7 @@
 <header class="app-header" class:app-header_hidden={hidden} class:app-header_scrolled={scrolled}>
 	<div class="container app-header__inner">
 		<a class="app-header__brand" href={homeHref}>
-			<img class="app-header__logo" src={logoSrc} alt="" width="36" height="36" />
+			<Logo size={36} />
 			<span class="app-header__text">
 				<strong>{brand}</strong>
 				{#if tagline}<small>{tagline}</small>{/if}
@@ -106,12 +107,6 @@
 		align-items: center;
 		gap: var(--space-sm);
 		text-decoration: none;
-	}
-
-	.app-header__logo {
-		width: 36px;
-		height: 36px;
-		flex-shrink: 0;
 	}
 
 	.app-header__text {

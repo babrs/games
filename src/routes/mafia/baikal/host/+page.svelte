@@ -4,7 +4,7 @@
 	import { gameState } from '$lib/stores';
 	import SetupScreen from './__components/SetupScreen/index.js';
 	import GameScreen from './__components/GameScreen/index.js';
-	import '$lib/css/tokens/mafiaHostTokens/mafiaHostTokens.css';
+	import '$lib/css/mafiaHostTokens/mafiaHostTokens.css';
 
 	onMount(() => {
 		gameState.load();
