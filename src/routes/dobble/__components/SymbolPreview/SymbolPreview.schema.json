@@ -2,9 +2,8 @@
   "name": "SymbolPreview",
   "type": "component",
   "svelteVersion": 5,
-  "description": "Карточка символа Good Dobble «Байкал»: изображение, номер, название и описание. Используется в сетке и в галерее.",
+  "description": "Карточка символа Good Dobble «Байкал»: изображение, номер, название и описание. Используется в сетке.",
   "props": [
-    { "name": "symbol", "type": "{ id: number, title: string, description: string, fullDescription?: string, image: string }", "required": true, "description": "Символ игры" },
-    { "name": "variant", "type": "'card' | 'large'", "required": false, "defaultValue": "card", "description": "Оформление: карточка сетки или крупный просмотр" }
+    { "name": "symbol", "type": "{ id: number, title: string, description: string, fullDescription?: string, image: string }", "required": true, "description": "Символ игры" }
   ]
 }

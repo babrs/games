@@ -1,9 +1,10 @@
 <script>
 	import { base } from '$app/paths';
-	import { GalleryModal, TabSwitcher } from 'babrs-ui';
+	import { TabSwitcher } from 'babrs-ui';
 	import { CardGrid } from '$lib/components';
 	import { HeroBanner } from '$lib/components';;
 	import SymbolPreview from './__components/SymbolPreview/index.js';
+	import SymbolModal from './__components/SymbolModal/index.js';
 
 	let { data } = $props();
 	const game = $derived(data.game);
@@ -42,11 +43,7 @@
 </section>
 
 {#if openIndex !== null}
-	<GalleryModal items={game.symbols} index={openIndex} onchange={(next) => (openIndex = next)} onclose={() => (openIndex = null)}>
-		{#snippet item(symbol)}
-			<SymbolPreview {symbol} variant="large" />
-		{/snippet}
-	</GalleryModal>
+	<SymbolModal symbols={game.symbols} index={openIndex} onchange={(next) => (openIndex = next)} onclose={() => (openIndex = null)} />
 {/if}
 
 <style>

@@ -1,0 +1,12 @@
+{
+  "name": "SymbolModal",
+  "type": "component",
+  "svelteVersion": 5,
+  "description": "Просмотр символа Good Dobble «Байкал» на весь экран: изображение, номер, название и описание. Соседние символы листаются кнопками, стрелками клавиатуры или свайпом.",
+  "props": [
+    { "name": "symbols", "type": "Array<{ id: number, title: string, description: string, fullDescription?: string, image: string }>", "required": true, "description": "Символы игры" },
+    { "name": "index", "type": "number", "required": true, "description": "Индекс открытого символа" },
+    { "name": "onchange", "type": "(index: number) => void", "required": true, "description": "Переход к другому символу" },
+    { "name": "onclose", "type": "() => void", "required": true, "description": "Закрытие окна" }
+  ]
+}

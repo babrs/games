@@ -11,22 +11,21 @@
 	/**
 	 * @typedef {Object} Props
 	 * @property {Symbol} symbol - Символ игры
-	 * @property {'card' | 'large'} [variant] - Оформление: карточка сетки или крупный просмотр
 	 */
 
 	/** @type {Props} */
-	let { symbol, variant = 'card' } = $props();
+	let { symbol } = $props();
 </script>
 
-<article class="symbol symbol_{variant}">
+<article class="symbol">
 	<div class="symbol__media">
 		<img
 			src={symbol.image}
 			alt={`${symbol.title}: символ игры Good Dobble «Байкал»`}
-			loading={variant === 'large' ? 'eager' : 'lazy'}
+			loading="lazy"
 			decoding="async"
-			width={variant === 'large' ? 520 : 320}
-			height={variant === 'large' ? 520 : 220}
+			width="320"
+			height="220"
 		/>
 	</div>
 	<div class="symbol__body">
@@ -107,30 +106,6 @@
 		font-size: var(--font-size-sm);
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 3;
-	}
-
-	.symbol_large .symbol__media {
-		min-height: 0;
-	}
-
-	.symbol_large .symbol__media img {
-		height: auto;
-		max-height: 52vh;
-	}
-
-	.symbol_large .symbol__body {
-		padding: var(--space-lg);
-	}
-
-	.symbol_large .symbol__title {
-		font-size: var(--font-size-lg);
-		letter-spacing: -0.02em;
-	}
-
-	.symbol_large .symbol__text {
-		display: block;
-		overflow: visible;
-		font-size: var(--font-size-md);
 	}
 
 	@media (prefers-reduced-motion: reduce) {
