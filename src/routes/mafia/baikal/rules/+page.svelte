@@ -1,7 +1,9 @@
 <script>
 	import { base } from '$app/paths';
 	import { TabSwitcher } from 'babrs-ui';
-	import { HeroBanner } from '$lib/components';;
+	import { HeroBanner } from '$lib/components';
+
+	let { data } = $props();
 </script>
 
 <svelte:head>
@@ -12,12 +14,12 @@
 <HeroBanner backgroundImage={data.image} title="Байкальская мафия" titleAlt="Байкальская мафия" />
 
 <TabSwitcher
-	label="Разделы Байкальская мафия"
+	label="Разделы Байкальской мафии"
 	active="rules"
 	items={[
 		{ id: 'characters', href: `${base}/mafia/baikal/`, label: 'Персонажи' },
 		{ id: 'rules', href: `${base}/mafia/baikal/rules/`, label: 'Правила' },
-		{ id: 'host', href: `${base}/mafia/baikal/host/`, label: 'Приложение ведущего' }
+		{ id: 'host', href: `${base}/mafia/baikal/host/`, label: 'Приложение ведущего', external: true }
 	]}
 />
 
