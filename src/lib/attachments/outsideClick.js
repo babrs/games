@@ -5,7 +5,9 @@ export function outsideClick(node, callback) {
 		}
 	}
 
-	document.addEventListener('click', handleClick, true);
+	setTimeout(() => {
+		document.addEventListener('click', handleClick, true);
+	}, 0);
 
 	return {
 		destroy() {

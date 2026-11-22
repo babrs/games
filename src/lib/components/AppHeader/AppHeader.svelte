@@ -18,9 +18,12 @@
 	 */
 
 	/** @type {Props} */
-	let { brand, tagline, homeHref, navItems = [] } = $props();
+	let { brand = 'Babr Games', tagline, homeHref, navItems = [] } = $props();
 
 	let menuOpen = $state(false);
+	let scrolled = $state(false);
+	let scrollDir = $state('up');
+	let lastScrollY = 0;
 
 	function toggleMenu() {
 		menuOpen = !menuOpen;
@@ -29,14 +32,23 @@
 	function closeMenu() {
 		menuOpen = false;
 	}
+
+	function handleScroll() {
+		const currentY = window.scrollY;
+		scrolled = currentY > 60;
+		scrollDir = currentY > lastScrollY && currentY > 120 ? 'down' : 'up';
+		lastScrollY = currentY;
+	}
 </script>
 
-<header class="app-header">
+<svelte:window onscroll={handleScroll} />
+
+<header class="app-header" class:app-header_scrolled={scrolled} class:app-header_hidden={scrollDir === 'down' && scrolled}>
 	<div class="container app-header__inner">
 		<a class="app-header__brand" href={homeHref} onclick={closeMenu}>
 			<Logo />
 			<div class="app-header__titles">
-				<span class="app-header__title">{brand}</span>
+				<span class="app-header__title">Babr Games</span>
 				{#if tagline}<span class="app-header__tagline">{tagline}</span>{/if}
 			</div>
 		</a>
@@ -57,7 +69,9 @@
 			class="app-header__nav"
 			class:app-header__nav_open={menuOpen}
 			aria-label="Основная навигация"
-			{@attach outsideClick(closeMenu)}
+			{#if menuOpen}
+				{@attach outsideClick(closeMenu)}
+			{/if}
 		>
 			{#each navItems as item (item.href)}
 				<a
@@ -79,9 +93,27 @@
 		position: sticky;
 		top: 0;
 		z-index: var(--z-header, 100);
-		border-bottom: 1px solid var(--color-border);
+		border-bottom: 1px solid transparent;
+		background: transparent;
+		color: var(--color-on-hero, #fff);
+		transition:
+			background 300ms cubic-bezier(0.22, 1, 0.36, 1),
+			border-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+			color 300ms cubic-bezier(0.22, 1, 0.36, 1),
+			transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
+			box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.app-header_scrolled {
+		border-bottom-color: var(--color-border);
 		background: color-mix(in srgb, var(--color-surface) 90%, transparent);
 		backdrop-filter: blur(12px);
+		color: var(--color-text);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.app-header_hidden {
+		transform: translateY(-100%);
 	}
 
 	.app-header__inner {
@@ -96,7 +128,7 @@
 		display: flex;
 		align-items: center;
 		gap: var(--space-sm);
-		color: var(--color-text);
+		color: inherit;
 		text-decoration: none;
 	}
 
@@ -121,7 +153,7 @@
 	}
 
 	.app-header__tagline {
-		color: var(--color-text-muted);
+		opacity: 0.8;
 		font-size: var(--font-size-xs);
 		line-height: 1.2;
 	}
@@ -143,7 +175,7 @@
 		width: 100%;
 		height: 3px;
 		border-radius: var(--radius-pill);
-		background: var(--color-text);
+		background: currentColor;
 		transition: transform var(--duration-fast), opacity var(--duration-fast);
 	}
 
@@ -156,13 +188,17 @@
 	.app-header__link {
 		padding: 0.5rem 0.85rem;
 		border-radius: var(--radius-pill);
-		color: var(--color-text-muted);
+		color: inherit;
+		opacity: 0.85;
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-bold);
+		text-decoration: none;
+		transition: opacity var(--duration-fast), background var(--duration-fast), color var(--duration-fast);
 	}
 
 	.app-header__link:hover,
 	.app-header__link_current {
+		opacity: 1;
 		color: var(--color-primary);
 		background: var(--color-primary-glow);
 	}
@@ -182,6 +218,7 @@
 			padding: var(--space-md);
 			border-bottom: 1px solid var(--color-border);
 			background: var(--color-surface);
+			color: var(--color-text);
 			box-shadow: var(--shadow-md);
 			opacity: 0;
 			visibility: hidden;
@@ -198,11 +235,6 @@
 		.app-header__link {
 			padding: 0.75rem 1rem;
 			border-radius: var(--radius-md);
-		}
-
-		.app-header__link:hover,
-		.app-header__link_current {
-			background: var(--color-primary-glow);
 		}
 	}
 </style>
