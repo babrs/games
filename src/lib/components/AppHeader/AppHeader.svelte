@@ -34,7 +34,7 @@
 <header class="app-header">
 	<div class="container app-header__inner">
 		<a class="app-header__brand" href={homeHref} onclick={closeMenu}>
-			<Logo class="app-header__logo" />
+			<Logo />
 			<div class="app-header__titles">
 				<span class="app-header__title">{brand}</span>
 				{#if tagline}<span class="app-header__tagline">{tagline}</span>{/if}
@@ -100,7 +100,7 @@
 		text-decoration: none;
 	}
 
-	.app-header__logo {
+	.app-header__brand :global(svg) {
 		width: 36px;
 		height: 36px;
 		flex-shrink: 0;
@@ -159,8 +159,6 @@
 		color: var(--color-text-muted);
 		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-bold);
-		text-decoration: none;
-		transition: color var(--duration-fast), background var(--duration-fast);
 	}
 
 	.app-header__link:hover,

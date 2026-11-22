@@ -13,3 +13,5 @@ export function outsideClick(node, callback) {
 		}
 	};
 }
+
+export default outsideClick;
