@@ -10,7 +10,7 @@
 	const path = $derived(page.url.pathname);
 	const isHostApp = $derived(path.startsWith(`${base}/mafia/baikal/host/`));
 	const navItems = $derived([
-		{ href: `${base}/`, label: 'Игры', current: path === `${base}/` },
+		{ href: `${base}/`, label: 'Главная', current: path === `${base}/` },
 		{ href: `${base}/dobble/`, label: 'Good Dobble', current: path.startsWith(`${base}/dobble`) },
 		{ href: `${base}/mafia/baikal/`, label: 'Мафия', current: path.startsWith(`${base}/mafia/baikal`) }
 	]);

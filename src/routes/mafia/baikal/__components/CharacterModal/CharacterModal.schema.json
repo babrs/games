@@ -1,0 +1,12 @@
+{
+  "name": "CharacterModal",
+  "type": "component",
+  "svelteVersion": 5,
+  "description": "Просмотр персонажа Байкальской мафии на весь экран: изображение, бейдж, название, цитата, атрибуты и правила. Листается стрелками, свайпом или Esc.",
+  "props": [
+    { "name": "characters", "type": "Array<any>", "required": true, "description": "Персонажи игры" },
+    { "name": "index", "type": "number", "required": true, "description": "Индекс открытого персонажа" },
+    { "name": "onchange", "type": "(index: number) => void", "required": true, "description": "Переход к другому персонажу" },
+    { "name": "onclose", "type": "() => void", "required": true, "description": "Закрытие окна" }
+  ]
+}

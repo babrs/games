@@ -4,6 +4,7 @@
 	import { CardGrid } from '$lib/components';
 	import { HeroBanner } from '$lib/components';;
 	import CharacterCard from './__components/CharacterCard/index.js';
+	import CharacterModal from './__components/CharacterModal/index.js';
 
 	let { data } = $props();
 	const game = $derived(data.game);
@@ -45,17 +46,12 @@
 </section>
 
 {#if openIndex !== null}
-	<GalleryModal
-		items={game.characters}
+	<CharacterModal
+		characters={game.characters}
 		index={openIndex}
-		labelledby="character-title"
 		onchange={(next) => (openIndex = next)}
 		onclose={() => (openIndex = null)}
-	>
-		{#snippet item(character)}
-			<CharacterCard {character} variant="large" />
-		{/snippet}
-	</GalleryModal>
+	/>
 {/if}
 
 <style>
