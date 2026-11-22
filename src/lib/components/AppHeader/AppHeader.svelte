@@ -69,9 +69,7 @@
 			class="app-header__nav"
 			class:app-header__nav_open={menuOpen}
 			aria-label="Основная навигация"
-			{#if menuOpen}
-				{@attach outsideClick(closeMenu)}
-			{/if}
+			use:outsideClick={closeMenu}
 		>
 			{#each navItems as item (item.href)}
 				<a
