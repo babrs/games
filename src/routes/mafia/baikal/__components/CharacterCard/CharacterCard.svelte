@@ -3,7 +3,7 @@
 	 * @typedef {Object} Character
 	 * @property {string} id - Идентификатор персонажа
 	 * @property {string} name - Название на карточке
-	 * @property {string} image - Изображение карточки от корня сайта
+	 * @property {string} image - Изображение карточке от корня сайта
 	 * @property {'peaceful' | 'predator' | 'special'} team - Команда
 	 * @property {string} teamLabel - Подпись команды
 	 * @property {string} when - Когда действует
@@ -45,7 +45,7 @@
 		<h3 class="character__title">{character.name}</h3>
 		<p class="character__when">
 			<span class="character__team {teamClasses[character.team]}">{character.teamLabel}</span>
-			{character.when}
+			{character.summary}
 		</p>
 	</div>
 </article>
@@ -72,23 +72,21 @@
 	.character__media {
 		display: grid;
 		place-items: center;
+		overflow: hidden;
 		border-bottom: 1px solid var(--color-border);
-		background:
-			radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--color-sky) 90%, transparent), transparent 7rem),
-			radial-gradient(circle at 72% 60%, color-mix(in srgb, var(--color-sand) 90%, transparent), transparent 8rem),
-			var(--color-bg);
+		background: var(--color-bg);
 	}
 
 	.character__media img {
 		width: 100%;
 		height: 240px;
-		padding: var(--space-md);
-		object-fit: contain;
+		padding: 0;
+		object-fit: cover;
 		transition: transform var(--duration-base) var(--easing-standard);
 	}
 
 	.character:hover .character__media img {
-		transform: scale(1.04) rotate(-1deg);
+		transform: scale(1.04);
 	}
 
 	.character__body {
@@ -125,7 +123,6 @@
 		color: var(--color-success);
 	}
 
-	.character+team_predator,
 	.character__team_predator {
 		color: var(--color-danger);
 	}
