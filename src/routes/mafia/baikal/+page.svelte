@@ -17,13 +17,7 @@
 	<meta name="description" content={game.description} />
 </svelte:head>
 
-<HeroBanner backgroundImage={game.image} title={game.title}>
-	<p class="lead">{game.description}</p>
-	<div class="hero-actions">
-		<Button size="lg" href="{base}/mafia/baikal/rules/">Правила игры</Button>
-		<Button size="lg" variant="secondary" href="{base}/mafia/baikal/host/" target="_blank" rel="noopener noreferrer">Приложение ведущего</Button>
-	</div>
-</HeroBanner>
+<HeroBanner backgroundImage={game.image} title={game.title} />
 
 <section class="container section facts" aria-label="Главное об игре">
 	{#each game.facts as fact (fact.label)}
