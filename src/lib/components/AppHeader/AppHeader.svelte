@@ -100,13 +100,16 @@
 
 <style>
 	.app-header {
-		position: sticky;
+		position: absolute;
 		top: 0;
+		left: 0;
+		right: 0;
 		z-index: var(--z-header, 100);
 		border-bottom: 1px solid transparent;
 		background: transparent;
 		color: var(--color-on-hero, #fff);
 		transition:
+			position 0s,
 			background 300ms cubic-bezier(0.22, 1, 0.36, 1),
 			border-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
 			color 300ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -115,6 +118,7 @@
 	}
 
 	.app-header_scrolled {
+		position: sticky;
 		border-bottom-color: var(--color-border);
 		background: color-mix(in srgb, var(--color-surface) 92%, transparent);
 		backdrop-filter: blur(12px);
