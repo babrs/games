@@ -20,7 +20,7 @@
 	<p class="lead">{game.description}</p>
 	<div class="hero-actions">
 		<Button size="lg" href="{base}/mafia/baikal/rules/">Правила игры</Button>
-		<Button size="lg" variant="secondary" href="{base}/mafia/baikal/host/">Приложение ведущего</Button>
+		<Button size="lg" variant="secondary" href="{base}/mafia/baikal/host/" target="_blank" rel="noopener noreferrer">Приложение ведущего</Button>
 	</div>
 </HeroBanner>
 

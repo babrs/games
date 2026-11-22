@@ -15,7 +15,7 @@
 	<p class="lead">Правила для игроков и ведущего: цель, роли, порядок ночи и дня, победа и баланс.</p>
 	<div class="hero-actions">
 		<Button variant="secondary" href="{base}/mafia/baikal/">К персонажам</Button>
-		<Button href="{base}/mafia/baikal/host/">Приложение ведущего</Button>
+		<Button href="{base}/mafia/baikal/host/" target="_blank" rel="noopener noreferrer">Приложение ведущего</Button>
 	</div>
 </HeroBanner>
 
