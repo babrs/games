@@ -1,74 +1,65 @@
 <script>
-	import Logo from '../Logo/index.js';
-
 	/**
 	 * @typedef {Object} NavItem
-	 * @property {string} href - Адрес ссылки
+	 * @property {string} href - Ссылка
 	 * @property {string} label - Текст ссылки
 	 * @property {boolean} [current] - Текущая страница
 	 */
 
 	/**
 	 * @typedef {Object} Props
-	 * @property {string} brand - Название проекта
-	 * @property {string} [tagline] - Подпись под названием
-	 * @property {string} [homeHref] - Адрес логотипа
-	 * @property {NavItem[]} [navItems] - Пункты навигации
-	 * @property {boolean} [hideOnScroll] - Прятать шапку при прокрутке вниз
+	 * @property {string} brand - Название бренда
+	 * @property {string} [tagline] - Подзаголовок
+	 * @property {string} homeHref - Ссылка на главную
+	 * @property {Array<NavItem>} navItems - Пункты меню
 	 */
 
 	/** @type {Props} */
-	let { brand, tagline = '', homeHref = '/', navItems = [], hideOnScroll = true } = $props();
+	let { brand, tagline, homeHref, navItems = [] } = $props();
 
-	let hidden = $state(false);
-	let scrolled = $state(false);
+	let menuOpen = $state(false);
 
-	$effect(() => {
-		let lastScrollY = window.scrollY;
-		let ticking = false;
+	function toggleMenu() {
+		menuOpen = !menuOpen;
+	}
 
-		function update() {
-			const current = window.scrollY;
-			const delta = current - lastScrollY;
-
-			scrolled = current > 8;
-
-			if (Math.abs(delta) > 8) {
-				hidden = hideOnScroll && current > 120 && delta > 0;
-				lastScrollY = current;
-			}
-
-			ticking = false;
-		}
-
-		function handleScroll() {
-			if (ticking) return;
-			ticking = true;
-			requestAnimationFrame(update);
-		}
-
-		window.addEventListener('scroll', handleScroll, { passive: true });
-		return () => window.removeEventListener('scroll', handleScroll);
-	});
+	function closeMenu() {
+		menuOpen = false;
+	}
 </script>
 
-<header class="app-header" class:app-header_hidden={hidden} class:app-header_scrolled={scrolled}>
+<header class="app-header">
 	<div class="container app-header__inner">
-		<a class="app-header__brand" href={homeHref}>
-			<Logo size={36} />
-			<span class="app-header__text">
-				<strong>{brand}</strong>
-				{#if tagline}<small>{tagline}</small>{/if}
-			</span>
+		<a class="app-header__brand" href={homeHref} onclick={closeMenu}>
+			<span class="app-header__title">{brand}</span>
+			{#if tagline}<span class="app-header__tagline">{tagline}</span>{/if}
 		</a>
 
-		{#if navItems.length}
-			<nav class="app-header__nav" aria-label="Основная навигация">
-				{#each navItems as link (link.href)}
-					<a href={link.href} aria-current={link.current ? 'page' : undefined}>{link.label}</a>
-				{/each}
-			</nav>
-		{/if}
+		<button
+			class="app-header__burger"
+			type="button"
+			aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
+			aria-expanded={menuOpen}
+			onclick={toggleMenu}
+		>
+			<span class="app-header__burger-line"></span>
+			<span class="app-header__burger-line"></span>
+			<span class="app-header__burger-line"></span>
+		</button>
+
+		<nav class="app-header__nav" class:app-header__nav_open={menuOpen} aria-label="Основная навигация">
+			{#each navItems as item (item.href)}
+				<a
+					class="app-header__link"
+					class:app-header__link_current={item.current}
+					href={item.href}
+					aria-current={item.current ? 'page' : undefined}
+					onclick={closeMenu}
+				>
+					{item.label}
+				</a>
+			{/each}
+		</nav>
 	</div>
 </header>
 
@@ -76,77 +67,119 @@
 	.app-header {
 		position: sticky;
 		top: 0;
-		z-index: var(--z-header);
-		height: var(--header-height);
-		border-bottom: 1px solid transparent;
-		background: color-mix(in srgb, var(--color-bg) 86%, transparent);
-		backdrop-filter: blur(14px);
-		transition:
-			transform var(--duration-base) var(--easing-standard),
-			border-color var(--duration-base) var(--easing-standard);
-	}
-
-	.app-header_scrolled {
-		border-color: var(--color-border);
-	}
-
-	.app-header_hidden {
-		transform: translateY(-100%);
+		z-index: var(--z-header, 100);
+		border-bottom: 1px solid var(--color-border);
+		background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+		backdrop-filter: blur(12px);
 	}
 
 	.app-header__inner {
 		display: flex;
-		height: 100%;
 		align-items: center;
 		justify-content: space-between;
+		min-height: 4.5rem;
 		gap: var(--space-md);
 	}
 
 	.app-header__brand {
-		display: inline-flex;
-		align-items: center;
+		display: flex;
+		align-items: baseline;
 		gap: var(--space-sm);
+		color: var(--color-text);
 		text-decoration: none;
 	}
 
-	.app-header__text {
-		display: grid;
-		line-height: 1.1;
+	.app-header__title {
+		font-family: var(--font-display);
+		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-bold);
+		letter-spacing: -0.03em;
 	}
 
-	.app-header__text small {
+	.app-header__tagline {
 		color: var(--color-text-muted);
-		font-size: var(--font-size-sm);
+		font-size: var(--font-size-xs);
+	}
+
+	.app-header__burger {
+		display: none;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 32px;
+		height: 24px;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	.app-header__burger-line {
+		display: block;
+		width: 100%;
+		height: 3px;
+		border-radius: var(--radius-pill);
+		background: var(--color-text);
+		transition: transform var(--duration-fast), opacity var(--duration-fast);
 	}
 
 	.app-header__nav {
 		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-xs);
+		align-items: center;
+		gap: var(--space-sm);
 	}
 
-	.app-header__nav a {
-		display: inline-flex;
-		min-height: 40px;
-		align-items: center;
-		padding: 0 var(--space-md);
+	.app-header__link {
+		padding: 0.5rem 0.85rem;
 		border-radius: var(--radius-pill);
+		color: var(--color-text-muted);
+		font-size: var(--font-size-sm);
 		font-weight: var(--font-weight-bold);
 		text-decoration: none;
+		transition: color var(--duration-fast), background var(--duration-fast);
 	}
 
-	.app-header__nav a[aria-current='page'] {
-		background: var(--color-primary);
-		color: var(--color-on-primary);
+	.app-header__link:hover,
+	.app-header__link_current {
+		color: var(--color-primary);
+		background: var(--color-primary-glow);
 	}
 
-	.app-header__nav a:hover {
-		background: var(--color-bg-alt);
-	}
+	@media (max-width: 640px) {
+		.app-header__burger {
+			display: flex;
+		}
 
-	@media (max-width: 520px) {
-		.app-header__nav a {
-			padding: 0 var(--space-sm);
+		.app-header__nav {
+			position: absolute;
+			top: 100%;
+			right: 0;
+			left: 0;
+			display: grid;
+			gap: var(--space-xs);
+			padding: var(--space-md);
+			border-bottom: 1px solid var(--color-border);
+			background: var(--color-surface);
+			box-shadow: var(--shadow-md);
+			opacity: 0;
+			visibility: hidden;
+			transform: translateY(-8px);
+			transition: opacity var(--duration-fast), transform var(--duration-fast), visibility var(--duration-fast);
+		}
+
+		.app-header__nav_open {
+			opacity: 1;
+			visibility: visible;
+			transform: none;
+		}
+
+		.app-header__link {
+			padding: 0.75rem 1rem;
+			border-radius: var(--radius-md);
+		}
+
+		.app-header__link:hover,
+		.app-header__link_current {
+			background: var(--color-primary-glow);
 		}
 	}
 </style>

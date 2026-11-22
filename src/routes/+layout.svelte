@@ -34,9 +34,7 @@
 	tagline="Настольные игры с понятными правилами"
 	links={[
 		{ href: `${base}/dobble/`, label: 'Good Dobble' },
-		{ href: `${base}/mafia/baikal/`, label: 'Байкальская мафия' },
-		{ href: 'https://github.com/Babrs', label: 'GitHub Babrs', external: true }
+		{ href: `${base}/mafia/baikal/`, label: 'Байкальская мафия' }
 	]}
-	note="Сайт собран на SvelteKit и Babrs UI"
 />
 {/if}

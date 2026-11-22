@@ -1,77 +1,104 @@
 <script>
 	/**
-	 * @typedef {Object} LinkItem
-	 * @property {string} href - Адрес ссылки
+	 * @typedef {Object} Link
+	 * @property {string} href - Ссылка
 	 * @property {string} label - Текст ссылки
-	 * @property {boolean} [external] - Открывать в новой вкладке
+	 * @property {boolean} [external] - Внешняя ссылка
 	 */
 
 	/**
 	 * @typedef {Object} Props
-	 * @property {string} title - Название проекта
-	 * @property {string} [tagline] - Короткое описание
-	 * @property {LinkItem[]} [links] - Ссылки подвала
-	 * @property {string} [note] - Строка внизу: авторство или юридическая информация
+	 * @property {string} title - Название сайта/бренда
+	 * @property {string} [tagline] - Слоган
+	 * @property {Array<Link>} [links] - Ссылки футера
+	 * @property {string} [note] - Примечание
 	 */
 
 	/** @type {Props} */
-	let { title, tagline = '', links = [], note = '' } = $props();
+	let { title, tagline, links = [], note } = $props();
 </script>
 
 <footer class="app-footer">
 	<div class="container app-footer__inner">
-		<p class="app-footer__title">{title}</p>
-		{#if tagline}<p class="app-footer__tagline">{tagline}</p>{/if}
-		{#if links.length}
-			<ul class="app-footer__links">
+		<div class="app-footer__brand">
+			<span class="app-footer__title">{title}</span>
+			{#if tagline}<p class="app-footer__tagline">{tagline}</p>{/if}
+		</div>
+
+		{#if links.length > 0}
+			<nav class="app-footer__nav" aria-label="Ссылки в подвале">
 				{#each links as link (link.href)}
-					<li>
-						<a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}>
-							{link.label}
-						</a>
-					</li>
+					<a
+						class="app-footer__link"
+						href={link.href}
+						target={link.external ? '_blank' : undefined}
+						rel={link.external ? 'noopener noreferrer' : undefined}
+					>
+						{link.label}
+					</a>
 				{/each}
-			</ul>
+			</nav>
 		{/if}
-		{#if note}<p class="app-footer__note">{note}</p>{/if}
+
+		{#if note}
+			<p class="app-footer__note">{note}</p>
+		{/if}
 	</div>
 </footer>
 
 <style>
 	.app-footer {
-		margin-top: auto;
-		padding-block: var(--space-xl);
 		border-top: 1px solid var(--color-border);
-		background: var(--color-bg-alt);
+		background: var(--color-surface);
+		padding-block: var(--space-xl);
 	}
 
 	.app-footer__inner {
-		display: grid;
-		gap: var(--space-sm);
-		justify-items: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		text-align: center;
+		gap: var(--space-lg);
+	}
+
+	.app-footer__brand {
+		display: grid;
+		gap: var(--space-xs);
 	}
 
 	.app-footer__title {
 		font-family: var(--font-display);
-		font-weight: var(--font-weight-black);
+		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-bold);
 	}
 
-	.app-footer__tagline,
-	.app-footer__note {
+	.app-footer__tagline {
+		margin: 0;
 		color: var(--color-text-muted);
 		font-size: var(--font-size-sm);
 	}
 
-	.app-footer__links {
+	.app-footer__nav {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
 		gap: var(--space-md);
-		list-style: none;
 	}
 
-	.app-footer__links a {
-		font-weight: var(--font-weight-medium);
+	.app-footer__link {
+		color: var(--color-text);
+		font-size: var(--font-size-sm);
+		text-decoration: none;
+		transition: color var(--duration-fast);
+	}
+
+	.app-footer__link:hover {
+		color: var(--color-primary);
+	}
+
+	.app-footer__note {
+		margin: 0;
+		color: var(--color-text-muted);
+		font-size: var(--font-size-xs);
 	}
 </style>
