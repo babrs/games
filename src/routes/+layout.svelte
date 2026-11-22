@@ -2,8 +2,8 @@
 	import 'babrs-ui/styles';
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
-	import AppHeader from '$lib/components/AppHeader/index.js';
-	import AppFooter from '$lib/components/AppFooter/index.js';
+	import { AppHeader } from '$lib/components';
+	import { AppFooter } from '$lib/components';
 
 	let { children } = $props();
 

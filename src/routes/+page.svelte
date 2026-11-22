@@ -1,8 +1,8 @@
 <script>
 	import { base } from '$app/paths';
 	import { Button } from 'babrs-ui';
-	import HeroBanner from '$lib/components/HeroBanner/index.js';;
-	import Card from '$lib/components/Card/index.js';
+	import { HeroBanner } from '$lib/components';;
+	import { Card } from '$lib/components';
 	import gamesRegistry from '$lib/content/gamesRegistry';
 </script>
 

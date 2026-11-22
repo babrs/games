@@ -1,7 +1,7 @@
 <script>
 	import { base } from '$app/paths';
 	import { Button } from 'babrs-ui';
-	import HeroBanner from '$lib/components/HeroBanner/index.js';;
+	import { HeroBanner } from '$lib/components';;
 
 	let { data } = $props();
 </script>
