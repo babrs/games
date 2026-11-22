@@ -1,5 +1,5 @@
 <script>
-	import notesState from '$lib/svelte/stores/notesState/index.js';
+	import notesState from '$lib/stores';
 
 	/**
 	 * @typedef {Object} Props
