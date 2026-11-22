@@ -69,32 +69,11 @@
 				</div>
 				<div class="character-modal__content">
 					<div class="character-modal__topline">
-						<span class="character-modal__badge">{character.team}</span>
+						<span class="character-modal__badge">{character.teamLabel}</span>
 						<span class="character-modal__counter">{index + 1} / {total}</span>
 					</div>
 					<h2 class="character-modal__title" id="character-modal-title">{character.name}</h2>
 					{#if character.alias}<p class="character-modal__alias">{character.alias}</p>{/if}
-					
-					<dl class="character-modal__facts">
-						{#if character.when}
-							<div class="character-modal__fact">
-								<dt>Действие</dt>
-								<dd>{character.when}</dd>
-							</div>
-						{/if}
-						{#if character.goal}
-							<div class="character-modal__fact">
-								<dt>Цель</dt>
-								<dd>{character.goal}</dd>
-							</div>
-						{/if}
-						{#if character.cardText}
-							<div class="character-modal__fact">
-								<dt>На карте</dt>
-								<dd>{character.cardText}</dd>
-							</div>
-						{/if}
-					</dl>
 
 					{#if character.summary}
 						<p class="character-modal__text">{character.summary}</p>
@@ -271,8 +250,8 @@
 	.character-modal__content {
 		display: grid;
 		align-content: center;
-		gap: 0.9rem;
-		padding: clamp(1.5rem, 4vw, 2.75rem);
+		gap: 1.1rem;
+		padding: clamp(1.5rem, 4vw, 3rem);
 	}
 
 	.character-modal__topline {
@@ -303,8 +282,8 @@
 	.character-modal__title {
 		margin: 0;
 		font-family: var(--font-display);
-		font-size: clamp(1.8rem, 3.5vw, 2.75rem);
-		letter-spacing: -0.05em;
+		font-size: clamp(2rem, 4vw, 3.25rem);
+		letter-spacing: -0.055em;
 		line-height: var(--line-height-heading);
 	}
 
@@ -315,34 +294,10 @@
 		font-style: italic;
 	}
 
-	.character-modal__facts {
-		display: grid;
-		gap: 0.5rem;
-		margin: 0;
-	}
-
-	.character-modal__fact {
-		display: grid;
-		gap: 0.15rem;
-	}
-
-	.character-modal__fact dt {
-		color: var(--color-text-muted);
-		font-size: var(--font-size-xs);
-		font-weight: var(--font-weight-bold);
-		text-transform: uppercase;
-		letter-spacing: 0.04em;
-	}
-
-	.character-modal__fact dd {
-		margin: 0;
-		font-size: var(--font-size-sm);
-	}
-
 	.character-modal__text {
 		margin: 0;
-		color: var(--color-text);
-		font-size: var(--font-size-md);
+		color: var(--color-text-muted);
+		font-size: var(--font-size-lg);
 	}
 
 	.character-modal__note {
@@ -360,7 +315,7 @@
 
 		.character-modal__image {
 			min-height: 280px;
-			padding-top: 3.5rem;
+			padding-top: 4rem;
 		}
 
 		.character-modal__image img {
@@ -368,7 +323,7 @@
 		}
 
 		.character-modal__nav {
-			top: 170px;
+			top: 190px;
 			width: 38px;
 			height: 58px;
 		}

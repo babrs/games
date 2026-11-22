@@ -1,6 +1,4 @@
 <script>
-	import { Badge } from 'babrs-ui';
-
 	/**
 	 * @typedef {Object} Character
 	 * @property {string} id - Идентификатор персонажа
@@ -24,7 +22,11 @@
 	/** @type {Props} */
 	let { character } = $props();
 
-	const tones = { peaceful: 'success', predator: 'danger', special: 'info' };
+	const teamClasses = {
+		peaceful: 'character__team_peaceful',
+		predator: 'character__team_predator',
+		special: 'character__team_special'
+	};
 </script>
 
 <article class="character">
@@ -40,13 +42,11 @@
 	</div>
 
 	<div class="character__body">
-		<div class="character__meta">
-			<Badge tone={tones[character.team]}>{character.teamLabel}</Badge>
-			{#if character.oneTime}<Badge>Один раз за игру</Badge>{/if}
-		</div>
-
 		<h3 class="character__title">{character.name}</h3>
-		<p class="character__when">{character.when}</p>
+		<p class="character__when">
+			<span class="character__team {teamClasses[character.team]}">{character.teamLabel}</span>
+			{character.summary}
+		</p>
 	</div>
 </article>
 
@@ -93,15 +93,9 @@
 
 	.character__body {
 		display: grid;
-		gap: 0.55rem;
+		gap: 0.4rem;
 		padding: var(--space-md);
 		text-align: left;
-	}
-
-	.character__meta {
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--space-xs);
 	}
 
 	.character__title {
@@ -120,6 +114,23 @@
 		font-size: var(--font-size-sm);
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 2;
+		line-height: 1.4;
+	}
+
+	.character__team {
+		font-weight: var(--font-weight-bold);
+	}
+
+	.character__team_peaceful {
+		color: var(--color-success);
+	}
+
+	.character__team_predator {
+		color: var(--color-danger);
+	}
+
+	.character__team_special {
+		color: var(--color-info);
 	}
 
 	@media (prefers-reduced-motion: reduce) {
