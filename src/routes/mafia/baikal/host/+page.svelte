@@ -16,7 +16,7 @@
 	<meta name="description" content="Приложение ведущего для игры «Байкальская мафия». Работает без интернета после первого открытия." />
 	<link rel="manifest" href="{base}/mafia/baikal/host/manifest.webmanifest" />
 	<link rel="apple-touch-icon" href="{base}/mafia/baikal/host/icons/apple-touch-icon.png" />
-	<meta name="theme-color" content="#f5f5f7" />
+	<meta name="theme-color" content="#fdf8f4" />
 	<meta name="mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-title" content="Мафия" />

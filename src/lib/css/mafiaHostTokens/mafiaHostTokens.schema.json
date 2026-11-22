@@ -7,8 +7,8 @@
     "colors": {
       "description": "Фон, текст и цвета команд и ролей",
       "tokens": {
-        "--text": { "value": "#1d1d1f", "type": "color", "description": "Основной текст" },
-        "--surface": { "value": "#ffffff", "type": "color", "description": "Фон карточек" },
+        "--text": { "value": "var(--color-text)", "type": "color", "description": "Основной текст" },
+        "--surface": { "value": "var(--color-surface)", "type": "color", "description": "Фон карточек" },
         "--predator": { "value": "#ff3b30", "type": "color", "description": "Хищники" },
         "--peaceful": { "value": "#34c759", "type": "color", "description": "Мирные" },
         "--special": { "value": "#af52de", "type": "color", "description": "Особые роли" }
@@ -17,7 +17,7 @@
     "geometry": {
       "description": "Скругления и высота панели",
       "tokens": {
-        "--radius": { "value": "12px", "type": "dimension", "description": "Скругление карточек" },
+        "--radius": { "value": "var(--radius-md)", "type": "dimension", "description": "Скругление карточек" },
         "--nav-h": { "value": "64px", "type": "dimension", "description": "Высота нижней панели" }
       }
     }

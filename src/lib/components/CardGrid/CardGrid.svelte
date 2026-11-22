@@ -24,9 +24,27 @@
 <style>
 	.card-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
-		gap: var(--space-lg);
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: var(--space-md);
 		list-style: none;
+	}
+
+	@media (max-width: 1100px) {
+		.card-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 760px) {
+		.card-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 520px) {
+		.card-grid {
+			grid-template-columns: minmax(0, 1fr);
+		}
 	}
 
 	.card-grid__item {

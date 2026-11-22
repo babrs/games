@@ -1,9 +1,9 @@
 :root {
-	--bg: #f5f5f7;
-	--surface: #ffffff;
-	--text: #1d1d1f;
-	--text-secondary: #86868b;
-	--accent: #007aff;
+	--bg: var(--color-bg);
+	--surface: var(--color-surface);
+	--text: var(--color-text);
+	--text-secondary: var(--color-text-muted);
+	--accent: var(--color-primary);
 	--predator: #ff3b30;
 	--peaceful: #34c759;
 	--special: #af52de;
@@ -16,7 +16,7 @@
 	--mute: #ffd60a;
 	--exile: #8e8e93;
 	--dead-bg: rgba(0, 0, 0, 0.04);
-	--radius: 12px;
+	--radius: var(--radius-md);
 	--font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial,
 		sans-serif;
 	--nav-h: 64px;
