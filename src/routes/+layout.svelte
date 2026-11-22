@@ -21,7 +21,7 @@
 </svelte:head>
 
 {#if !isHostApp}
-	<AppHeader brand="Babrs Games" tagline="игры для семьи" homeHref="{base}/" {navItems} />
+	<AppHeader brand="Babr Games" tagline="игры для семьи" homeHref="{base}/" {navItems} />
 {/if}
 
 <main>
@@ -30,10 +30,10 @@
 
 {#if !isHostApp}
 <AppFooter
-	title="Babrs Games"
+	title="Babr Games"
 	tagline="Настольные игры с понятными правилами"
 	links={[
-		{ href: `${base}/dobble/`, label: 'Good Dobble' },
+		{ href: `${base}/dobble/`, label: 'Добрый Доббль' },
 		{ href: `${base}/mafia/baikal/`, label: 'Байкальская мафия' }
 	]}
 />

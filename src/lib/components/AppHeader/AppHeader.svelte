@@ -1,5 +1,5 @@
 <script>
-	import { outsideClick } from '$lib/attachments';
+	import { outsideClick, smartHeader } from '$lib/attachments';
 	import { Logo } from '$lib/components';
 
 	/**
@@ -21,16 +21,6 @@
 	let { brand = 'Babr Games', tagline, homeHref, navItems = [] } = $props();
 
 	let menuOpen = $state(false);
-	let scrolled = $state(false);
-	let scrollDir = $state('up');
-	let lastScrollY = 0;
-
-	$effect(() => {
-		if (typeof window !== 'undefined') {
-			lastScrollY = window.scrollY;
-			scrolled = lastScrollY > 20;
-		}
-	});
 
 	function toggleMenu() {
 		menuOpen = !menuOpen;
@@ -39,23 +29,9 @@
 	function closeMenu() {
 		menuOpen = false;
 	}
-
-	function handleScroll() {
-		const currentY = window.scrollY;
-		scrolled = currentY > 20;
-		if (currentY > lastScrollY && currentY > 80) {
-			scrollDir = 'down';
-			closeMenu();
-		} else if (currentY < lastScrollY) {
-			scrollDir = 'up';
-		}
-		lastScrollY = currentY;
-	}
 </script>
 
-<svelte:window onscroll={handleScroll} />
-
-<header class="app-header" class:app-header_scrolled={scrolled} class:app-header_hidden={scrollDir === 'down' && scrolled}>
+<header class="app-header" use:smartHeader={{ topOffset: 20 }}>
 	<div class="container app-header__inner">
 		<a class="app-header__brand" href={homeHref} onclick={closeMenu}>
 			<Logo />
@@ -109,16 +85,19 @@
 		background: transparent;
 		color: var(--color-on-hero, #fff);
 		transition:
-			position 0s,
-			background 300ms cubic-bezier(0.22, 1, 0.36, 1),
-			border-color 300ms cubic-bezier(0.22, 1, 0.36, 1),
-			color 300ms cubic-bezier(0.22, 1, 0.36, 1),
-			transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
-			box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1);
+			background 350ms cubic-bezier(0.22, 1, 0.36, 1),
+			border-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+			color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+			transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+			box-shadow 350ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
-	.app-header_scrolled {
-		position: sticky;
+	.app-header.is-sticky {
+		position: fixed;
+		top: 0;
+	}
+
+	.app-header.is-scrolled {
 		border-bottom-color: var(--color-border);
 		background: color-mix(in srgb, var(--color-surface) 92%, transparent);
 		backdrop-filter: blur(12px);
@@ -126,7 +105,7 @@
 		box-shadow: var(--shadow-sm);
 	}
 
-	.app-header_hidden {
+	.app-header.is-hidden {
 		transform: translateY(-100%);
 	}
 

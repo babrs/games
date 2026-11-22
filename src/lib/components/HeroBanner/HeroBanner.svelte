@@ -42,7 +42,7 @@
 		position: absolute;
 		inset: 0;
 		z-index: -1;
-		background: linear-gradient(180deg, color-mix(in srgb, var(--color-text) 10%, transparent), color-mix(in srgb, var(--color-text) 45%, transparent));
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.5) 100%);
 	}
 
 	.hero__content {
@@ -50,7 +50,7 @@
 		align-content: center;
 		justify-items: center;
 		gap: var(--space-md);
-		padding: var(--space-xl) var(--space-md);
+		padding: calc(var(--space-xl) + 2rem) var(--space-md) var(--space-xl);
 		text-align: center;
 	}
 
