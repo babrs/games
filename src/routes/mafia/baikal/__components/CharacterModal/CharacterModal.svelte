@@ -227,21 +227,20 @@
 	.character-modal__image {
 		display: grid;
 		place-items: center;
+		overflow: hidden;
 		min-height: 420px;
-		padding: 1.5rem;
-		background:
-			radial-gradient(circle at 32% 24%, color-mix(in srgb, var(--color-sky) 95%, transparent), transparent 9rem),
-			radial-gradient(circle at 70% 68%, color-mix(in srgb, var(--color-sand) 95%, transparent), transparent 10rem),
-			var(--color-bg-alt);
+		height: 100%;
+		padding: 0;
+		background: var(--color-bg);
 	}
 
 	.character-modal__image img {
 		display: block;
-		width: min(100%, 360px);
-		max-height: 420px;
-		margin: auto;
-		object-fit: contain;
-		filter: drop-shadow(0 18px 28px color-mix(in srgb, var(--color-text) 12%, transparent));
+		width: 100%;
+		height: 100%;
+		min-height: 420px;
+		margin: 0;
+		object-fit: cover;
 		user-select: none;
 		-webkit-user-drag: none;
 		pointer-events: none;
@@ -315,15 +314,15 @@
 
 		.character-modal__image {
 			min-height: 280px;
-			padding-top: 4rem;
 		}
 
 		.character-modal__image img {
-			max-height: 240px;
+			min-height: 280px;
+			max-height: 320px;
 		}
 
 		.character-modal__nav {
-			top: 190px;
+			top: 140px;
 			width: 38px;
 			height: 58px;
 		}
