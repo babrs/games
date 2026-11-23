@@ -2,36 +2,335 @@
 	import { base } from '$app/paths';
 	import { Button } from 'babrs-ui';
 	import { HeroBanner } from '$lib/components';
-	import { Card } from '$lib/components';
-	import gamesRegistry from '$lib/content/gamesRegistry';
 </script>
 
 <svelte:head>
-	<title>Babr Games — игры для семьи</title>
-	<meta name="description" content="Настольные игры Babr Games: Добрый Доббль «Байкал» и Байкальская мафия с приложением для ведущего." />
+	<title>Бабр Игры — настолки из Сибири</title>
+	<meta name="description" content="Фирменный магазин издательства Бабр Игры. Настольные игры с сибирским характером: Доббль Байкал и Байкальская мафия." />
 </svelte:head>
 
-<HeroBanner title="Игры Babr Games" backgroundImage="{base}/images/dobble/baikal/hero-baikal.webp" />
-
-<section class="container section" aria-labelledby="games-title">
-	<h2 class="section__title" id="games-title">Игры</h2>
-	<div class="games">
-		{#each gamesRegistry as game (game.slug)}
-			<Card {...game} />
-		{/each}
+<HeroBanner title="Настольные игры с характером Байкала" backgroundImage="{base}/images/dobble/baikal/hero-baikal.webp">
+	<div class="hero-actions">
+		<Button href="#catalog" variant="primary">Перейти в каталог</Button>
 	</div>
-</section>
+</HeroBanner>
+
+<main class="storefront">
+	<section id="catalog" class="container section">
+		<header class="section__header">
+			<h2 class="section__title">Каталог игр</h2>
+			<p class="section__subtitle">Игры для компании и всей семьи</p>
+		</header>
+
+		<div class="product-grid">
+			<!-- Product 1 -->
+			<article class="product-card">
+				<div class="product-card__image-wrap">
+					<div class="product-card__badge product-card__badge_hit">Хит продаж</div>
+					<!-- Абстрактный фон или плейсхолдер, пока нет финальных фото коробок -->
+					<div class="product-card__image product-card__image_dobble"></div>
+				</div>
+				<div class="product-card__content">
+					<div class="product-card__meta">
+						<span class="product-card__status">В наличии</span>
+					</div>
+					<h3 class="product-card__title">Добрый Доббль «Байкал»</h3>
+					<p class="product-card__desc">57 уникальных символов Байкала: животные, знаковые места и легенды. Быстрая игра на внимание для всей семьи.</p>
+					<div class="product-card__footer">
+						<div class="product-card__price">890 ₽</div>
+						<Button variant="primary">Купить</Button>
+					</div>
+					<div class="product-card__links">
+						<a href="{base}/dobble/" class="product-card__link">Об игре и символах →</a>
+					</div>
+				</div>
+			</article>
+
+			<!-- Product 2 -->
+			<article class="product-card">
+				<div class="product-card__image-wrap">
+					<div class="product-card__badge product-card__badge_new">Новинка</div>
+					<!-- Абстрактный фон или плейсхолдер -->
+					<div class="product-card__image product-card__image_mafia"></div>
+				</div>
+				<div class="product-card__content">
+					<div class="product-card__meta">
+						<span class="product-card__status">В наличии</span>
+					</div>
+					<h3 class="product-card__title">Байкальская мафия</h3>
+					<p class="product-card__desc">Психологическая игра в атмосферном сеттинге. Карточки персонажей, правила и приложение для ведущего.</p>
+					<div class="product-card__footer">
+						<div class="product-card__price">1 290 ₽</div>
+						<Button variant="primary">Купить</Button>
+					</div>
+					<div class="product-card__links">
+						<a href="{base}/mafia/baikal/" class="product-card__link">Об игре и персонажах →</a>
+					</div>
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<section class="container section digital-bonus">
+		<div class="digital-bonus__content">
+			<h2 class="digital-bonus__title">Цифровые бонусы к играм</h2>
+			<p class="digital-bonus__text">
+				Каждая копия «Байкальской мафии» поставляется с бесплатным <strong>веб-приложением для ведущего</strong>. 
+				Оно помогает распределять роли, следить за сменой дня и ночи, и работает без интернета прямо в браузере смартфона.
+			</p>
+			<div class="digital-bonus__actions">
+				<Button href="{base}/mafia/baikal/host/" variant="outline">Попробовать приложение</Button>
+			</div>
+		</div>
+	</section>
+
+	<section class="container section upcoming">
+		<header class="section__header">
+			<h2 class="section__title">Скоро в продаже</h2>
+			<p class="section__subtitle">Работаем над новыми проектами издательства</p>
+		</header>
+		<div class="upcoming__grid">
+			<div class="upcoming-card">
+				<h3 class="upcoming-card__title">Тайна Ольхона</h3>
+				<p class="upcoming-card__desc">Кооперативная настольная игра-детектив</p>
+				<span class="upcoming-card__tag">В разработке</span>
+			</div>
+			<div class="upcoming-card">
+				<h3 class="upcoming-card__title">Сибирский путь</h3>
+				<p class="upcoming-card__desc">Стратегия об исследовании Сибири</p>
+				<span class="upcoming-card__tag">Тестирование</span>
+			</div>
+		</div>
+	</section>
+</main>
 
 <style>
+	.hero-actions {
+		margin-top: var(--space-md);
+	}
+
+	.storefront {
+		padding-bottom: var(--space-2xl);
+	}
+
 	.section {
-		display: grid;
-		gap: var(--space-lg);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-xl);
 		padding-block: var(--space-xl);
 	}
 
-	.games {
+	.section__header {
+		text-align: center;
+		display: grid;
+		gap: var(--space-xs);
+	}
+
+	.section__title {
+		font-family: var(--font-display);
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-bold);
+	}
+
+	.section__subtitle {
+		color: var(--color-text-muted);
+		font-size: var(--font-size-md);
+	}
+
+	/* Storefront Grid */
+	.product-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: var(--space-xl);
+	}
+
+	.product-card {
+		display: flex;
+		flex-direction: column;
+		border-radius: var(--radius-xl);
+		background: var(--color-surface);
+		border: 1px solid var(--color-border);
+		box-shadow: var(--shadow-sm);
+		overflow: hidden;
+		transition: transform var(--duration-normal), box-shadow var(--duration-normal);
+	}
+
+	.product-card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-md);
+	}
+
+	.product-card__image-wrap {
+		position: relative;
+		height: 260px;
+		background: var(--color-bg-alt);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.product-card__image {
+		width: 100%;
+		height: 100%;
+		background-size: cover;
+		background-position: center;
+	}
+
+	.product-card__image_dobble {
+		background-image: linear-gradient(135deg, rgba(255,140,0,0.1) 0%, rgba(255,20,147,0.1) 100%), radial-gradient(circle at 50% 50%, var(--color-primary-glow) 0%, transparent 60%);
+	}
+
+	.product-card__image_mafia {
+		background-image: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(75,0,130,0.1) 100%), radial-gradient(circle at 50% 50%, rgba(0,0,0,0.05) 0%, transparent 60%);
+	}
+
+	.product-card__badge {
+		position: absolute;
+		top: var(--space-md);
+		left: var(--space-md);
+		padding: 0.35rem 0.85rem;
+		border-radius: var(--radius-pill);
+		font-size: var(--font-size-xs);
+		font-weight: var(--font-weight-bold);
+		color: #fff;
+		z-index: 2;
+	}
+
+	.product-card__badge_hit {
+		background: var(--color-primary);
+	}
+
+	.product-card__badge_new {
+		background: var(--color-accent, #6366f1);
+	}
+
+	.product-card__content {
+		display: flex;
+		flex-direction: column;
+		padding: var(--space-lg);
+		flex: 1;
+		gap: var(--space-sm);
+	}
+
+	.product-card__meta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.product-card__status {
+		font-size: var(--font-size-xs);
+		color: var(--color-success, #10b981);
+		font-weight: var(--font-weight-bold);
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+	}
+
+	.product-card__title {
+		font-family: var(--font-display);
+		font-size: var(--font-size-lg);
+		font-weight: var(--font-weight-bold);
+		line-height: 1.2;
+	}
+
+	.product-card__desc {
+		color: var(--color-text-muted);
+		font-size: var(--font-size-sm);
+		line-height: 1.5;
+		margin-bottom: var(--space-md);
+		flex: 1;
+	}
+
+	.product-card__footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding-top: var(--space-md);
+		border-top: 1px dashed var(--color-border);
+		margin-bottom: var(--space-md);
+	}
+
+	.product-card__price {
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-black);
+		font-family: var(--font-display);
+	}
+
+	.product-card__links {
+		display: flex;
+		justify-content: center;
+	}
+
+	.product-card__link {
+		font-size: var(--font-size-sm);
+		color: var(--color-primary);
+		text-decoration: none;
+		font-weight: var(--font-weight-bold);
+	}
+
+	.product-card__link:hover {
+		text-decoration: underline;
+	}
+
+	/* Digital Bonus */
+	.digital-bonus {
+		background: color-mix(in srgb, var(--color-surface) 90%, transparent);
+		border-radius: var(--radius-2xl);
+		padding: var(--space-2xl) var(--space-xl);
+		text-align: center;
+		border: 1px solid var(--color-border);
+		margin-block: var(--space-xl);
+	}
+
+	.digital-bonus__title {
+		font-family: var(--font-display);
+		font-size: var(--font-size-xl);
+		font-weight: var(--font-weight-bold);
+		margin-bottom: var(--space-md);
+	}
+
+	.digital-bonus__text {
+		color: var(--color-text-muted);
+		font-size: var(--font-size-md);
+		max-width: 60ch;
+		margin: 0 auto var(--space-xl);
+		line-height: 1.6;
+	}
+
+	/* Upcoming */
+	.upcoming__grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: var(--space-lg);
+		gap: var(--space-md);
+	}
+
+	.upcoming-card {
+		padding: var(--space-lg);
+		background: color-mix(in srgb, var(--color-surface) 50%, transparent);
+		border: 1px dashed var(--color-border);
+		border-radius: var(--radius-lg);
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-sm);
+	}
+
+	.upcoming-card__title {
+		font-weight: var(--font-weight-bold);
+		font-size: var(--font-size-md);
+	}
+
+	.upcoming-card__desc {
+		color: var(--color-text-muted);
+		font-size: var(--font-size-sm);
+	}
+
+	.upcoming-card__tag {
+		margin-top: var(--space-xs);
+		display: inline-block;
+		padding: 0.2rem 0.6rem;
+		background: var(--color-bg-alt);
+		border-radius: var(--radius-pill);
+		font-size: var(--font-size-xs);
+		color: var(--color-text-muted);
 	}
 </style>
