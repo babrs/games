@@ -1,10 +1,6 @@
 <script>
 	import { base } from '$app/paths';
-	import { TabSwitcher } from 'babrs-ui';
-	import { CardGrid } from '$lib/components';
 	import { HeroBanner } from '$lib/components';;
-	import SymbolPreview from './__components/SymbolPreview/index.js';
-	import SymbolModal from './__components/SymbolModal/index.js';
 
 	let { data } = $props();
 	const game = $derived(data.game);
@@ -18,7 +14,7 @@
 	<meta name="keywords" content={game.keywords.join(', ')} />
 </svelte:head>
 
-<HeroBanner backgroundImage={game.heroImage} title="Добрый Доббль" titleImage="{base}/images/dobble/baikal/title-baikal.webp" titleAlt="Добрый Доббль Байкал">
+<HeroBanner backgroundImage={game.heroImage} title="Добрый Доббль" titleImage="{base}/images/dobble/baikal/title-baikal.webp" titleAlt="Добрый Доббль Байкал" subtitle="Добрый Доббль">
 	<nav class="hero-menu" aria-label="Разделы Доброго Доббля">
 		<a class="hero-menu__item hero-menu__item_active" href="{base}/dobble/">Символы</a>
 		<a class="hero-menu__item" href="{base}/dobble/rules/">Правила</a>
@@ -47,27 +43,27 @@
 		justify-content: center;
 		align-items: center;
 		gap: var(--space-lg);
-		margin-top: var(--space-sm);
+		margin-top: auto;
+		padding-top: var(--space-md);
 	}
 
 	.hero-menu__item {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.35rem;
 		color: rgba(255, 255, 255, 0.85);
 		font-family: var(--font-display);
 		font-size: var(--font-size-md);
-		font-weight: 600;
+		font-weight: 400;
 		text-decoration: none;
-		padding-bottom: 3px;
-		border-bottom: 2px solid transparent;
+		padding-bottom: 4px;
+		border-bottom: 3px solid transparent;
 		transition: color var(--duration-fast), border-color var(--duration-fast);
 	}
 
 	.hero-menu__item:hover,
 	.hero-menu__item_active {
 		color: #fff;
-		border-bottom-color: var(--color-primary, #ff4400);
+		border-bottom-color: #fff;
 	}
 
 	.section {
