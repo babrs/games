@@ -56,6 +56,25 @@
 			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
 			<span class="app-header__burger-line" class:app-header__burger-line_open={menuOpen}></span>
 		</button>
+
+		<nav
+			class="app-header__nav"
+			class:app-header__nav_open={menuOpen}
+			aria-label="Основная навигация"
+			{@attach outsideClick(closeMenu, { ignore: '.app-header__burger' })}
+		>
+			{#each navItems as item (item.href)}
+				<a
+					class="app-header__link"
+					class:app-header__link_current={item.current}
+					href={item.href}
+					aria-current={item.current ? 'page' : undefined}
+					onclick={closeMenu}
+				>
+					{item.label}
+				</a>
+			{/each}
+		</nav>
 	</div>
 </header>
 
@@ -68,10 +87,9 @@
 ></div>
 
 <nav
-	class="app-header__nav"
-	class:app-header__nav_open={menuOpen}
-	aria-label="Основная навигация"
-	{@attach outsideClick(closeMenu, { ignore: '.app-header__burger' })}
+	class="app-header__mob-drawer"
+	class:app-header__mob-drawer_open={menuOpen}
+	aria-label="Мобильная навигация"
 >
 	<div class="app-header__nav-inner">
 		{#each navItems as item (item.href)}
@@ -214,8 +232,8 @@
 		display: none;
 		flex-direction: column;
 		justify-content: space-between;
-		width: 24px;
-		height: 18px;
+		width: 20px;
+		height: 14px;
 		padding: 0;
 		border: 0;
 		background: transparent;
@@ -234,7 +252,7 @@
 	}
 
 	.app-header__burger-line_open:nth-child(1) {
-		transform: translateY(8px) rotate(45deg);
+		transform: translateY(6px) rotate(45deg);
 	}
 
 	.app-header__burger-line_open:nth-child(2) {
@@ -242,7 +260,7 @@
 	}
 
 	.app-header__burger-line_open:nth-child(3) {
-		transform: translateY(-8px) rotate(-45deg);
+		transform: translateY(-6px) rotate(-45deg);
 	}
 
 	.app-header__nav {
@@ -281,11 +299,15 @@
 		display: none;
 	}
 
-	.app-header__subnav {
+	.app-header__mob-drawer {
 		display: none;
 	}
 
 	@media (max-width: 640px) {
+		.app-header__nav {
+			display: none;
+		}
+
 		.app-header__burger {
 			display: flex;
 		}
@@ -307,7 +329,7 @@
 			visibility: visible;
 		}
 
-		.app-header__nav {
+		.app-header__mob-drawer {
 			position: fixed;
 			top: 0;
 			right: 0;
@@ -326,7 +348,7 @@
 			overflow-y: auto;
 		}
 
-		.app-header__nav_open {
+		.app-header__mob-drawer_open {
 			transform: translateX(0);
 			visibility: visible;
 		}
