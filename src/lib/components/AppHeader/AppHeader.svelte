@@ -157,15 +157,12 @@
 			box-shadow 350ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
-	.app-header__brand :global(svg) {
-		width: 36px;
-		height: 36px;
-		flex-shrink: 0;
-		color: #fff;
+	.app-header :global(svg) {
+		color: #ffffff;
 		transition: color 350ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
-	.app-header:global([data-solid]) .app-header__brand :global(svg) {
+	.app-header:global([data-solid]) :global(svg) {
 		color: var(--color-primary);
 	}
 
