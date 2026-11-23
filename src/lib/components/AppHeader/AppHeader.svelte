@@ -157,6 +157,18 @@
 			box-shadow 350ms cubic-bezier(0.22, 1, 0.36, 1);
 	}
 
+	.app-header__brand :global(svg) {
+		width: 36px;
+		height: 36px;
+		flex-shrink: 0;
+		color: #fff;
+		transition: color 350ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	.app-header:global([data-solid]) .app-header__brand :global(svg) {
+		color: var(--color-primary);
+	}
+
 	.app-header:global([data-solid]) {
 		border-bottom-color: var(--color-border);
 		background: color-mix(in srgb, var(--color-surface) 92%, transparent);
@@ -179,12 +191,6 @@
 		gap: var(--space-sm);
 		color: inherit;
 		text-decoration: none;
-	}
-
-	.app-header__brand :global(svg) {
-		width: 36px;
-		height: 36px;
-		flex-shrink: 0;
 	}
 
 	.app-header__titles {
@@ -211,8 +217,8 @@
 		display: none;
 		flex-direction: column;
 		justify-content: space-between;
-		width: 32px;
-		height: 24px;
+		width: 24px;
+		height: 18px;
 		padding: 0;
 		border: 0;
 		background: transparent;
@@ -224,14 +230,14 @@
 	.app-header__burger-line {
 		display: block;
 		width: 100%;
-		height: 3px;
+		height: 2px;
 		border-radius: var(--radius-pill);
 		background: currentColor;
 		transition: transform var(--duration-fast), opacity var(--duration-fast);
 	}
 
 	.app-header__burger-line_open:nth-child(1) {
-		transform: translateY(10.5px) rotate(45deg);
+		transform: translateY(8px) rotate(45deg);
 	}
 
 	.app-header__burger-line_open:nth-child(2) {
@@ -239,7 +245,7 @@
 	}
 
 	.app-header__burger-line_open:nth-child(3) {
-		transform: translateY(-10.5px) rotate(-45deg);
+		transform: translateY(-8px) rotate(-45deg);
 	}
 
 	.app-header__nav {
