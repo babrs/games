@@ -7,6 +7,9 @@
 
 	let { children } = $props();
 
+	const brand = 'Бабр Игры';
+	const tagline = 'настолки из сибири';
+
 	const path = $derived(page.url.pathname);
 	const isHostApp = $derived(path.startsWith(`${base}/mafia/baikal/host/`));
 	const navItems = $derived([
@@ -21,7 +24,7 @@
 </svelte:head>
 
 {#if !isHostApp}
-	<AppHeader brand="Babr Games" tagline="игры для семьи" homeHref="{base}/" {navItems} />
+	<AppHeader {brand} {tagline} homeHref="{base}/" {navItems} />
 {/if}
 
 <main>
@@ -30,8 +33,8 @@
 
 {#if !isHostApp}
 <AppFooter
-	title="Babr Games"
-	tagline="Настольные игры с понятными правилами"
+	title={brand}
+	{tagline}
 	links={[
 		{ href: `${base}/dobble/`, label: 'Добрый Доббль' },
 		{ href: `${base}/mafia/baikal/`, label: 'Байкальская мафия' }
