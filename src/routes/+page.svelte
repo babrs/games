@@ -6,7 +6,7 @@
 
 <svelte:head>
 	<title>Бабр Игры — настолки из Сибири</title>
-	<meta name="description" content="Фирменный магазин издательства Бабр Игры. Настольные игры с сибирским характером: Доббль Байкал и Байкальская мафия." />
+	<meta name="description" content="Настольные игры с сибирским характером: Доббль Байкал и Байкальская мафия." />
 </svelte:head>
 
 <HeroBanner title="Настольные игры с характером Байкала" backgroundImage="{base}/images/dobble/baikal/hero-baikal.webp">
@@ -15,7 +15,7 @@
 	</div>
 </HeroBanner>
 
-<main class="storefront">
+<div class="storefront">
 	<section id="catalog" class="container section">
 		<header class="section__header">
 			<h2 class="section__title">Каталог игр</h2>
@@ -26,19 +26,14 @@
 			<!-- Product 1 -->
 			<article class="product-card">
 				<div class="product-card__image-wrap">
-					<div class="product-card__badge product-card__badge_hit">Хит продаж</div>
 					<!-- Абстрактный фон или плейсхолдер, пока нет финальных фото коробок -->
 					<div class="product-card__image product-card__image_dobble"></div>
 				</div>
 				<div class="product-card__content">
-					<div class="product-card__meta">
-						<span class="product-card__status">В наличии</span>
-					</div>
 					<h3 class="product-card__title">Добрый Доббль «Байкал»</h3>
 					<p class="product-card__desc">57 уникальных символов Байкала: животные, знаковые места и легенды. Быстрая игра на внимание для всей семьи.</p>
 					<div class="product-card__footer">
-						<div class="product-card__price">890 ₽</div>
-						<Button variant="primary">Купить</Button>
+						<Button href="{base}/dobble/rules/" variant="primary">Правила игры</Button>
 					</div>
 					<div class="product-card__links">
 						<a href="{base}/dobble/" class="product-card__link">Об игре и символах →</a>
@@ -49,19 +44,14 @@
 			<!-- Product 2 -->
 			<article class="product-card">
 				<div class="product-card__image-wrap">
-					<div class="product-card__badge product-card__badge_new">Новинка</div>
 					<!-- Абстрактный фон или плейсхолдер -->
 					<div class="product-card__image product-card__image_mafia"></div>
 				</div>
 				<div class="product-card__content">
-					<div class="product-card__meta">
-						<span class="product-card__status">В наличии</span>
-					</div>
 					<h3 class="product-card__title">Байкальская мафия</h3>
 					<p class="product-card__desc">Психологическая игра в атмосферном сеттинге. Карточки персонажей, правила и приложение для ведущего.</p>
 					<div class="product-card__footer">
-						<div class="product-card__price">1 290 ₽</div>
-						<Button variant="primary">Купить</Button>
+						<Button href="{base}/mafia/baikal/rules/" variant="primary">Правила игры</Button>
 					</div>
 					<div class="product-card__links">
 						<a href="{base}/mafia/baikal/" class="product-card__link">Об игре и персонажах →</a>
@@ -86,23 +76,17 @@
 
 	<section class="container section upcoming">
 		<header class="section__header">
-			<h2 class="section__title">Скоро в продаже</h2>
-			<p class="section__subtitle">Работаем над новыми проектами издательства</p>
+			<h2 class="section__title">Новые игры</h2>
+			<p class="section__subtitle">Работаем над следующими проектами</p>
 		</header>
 		<div class="upcoming__grid">
 			<div class="upcoming-card">
-				<h3 class="upcoming-card__title">Тайна Ольхона</h3>
-				<p class="upcoming-card__desc">Кооперативная настольная игра-детектив</p>
-				<span class="upcoming-card__tag">В разработке</span>
-			</div>
-			<div class="upcoming-card">
-				<h3 class="upcoming-card__title">Сибирский путь</h3>
-				<p class="upcoming-card__desc">Стратегия об исследовании Сибири</p>
-				<span class="upcoming-card__tag">Тестирование</span>
+				<h3 class="upcoming-card__title">Анонсы</h3>
+				<p class="upcoming-card__desc">О новых играх расскажем, когда будет готово</p>
 			</div>
 		</div>
 	</section>
-</main>
+</div>
 
 <style>
 	.hero-actions {
@@ -182,46 +166,12 @@
 		background-image: linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(75,0,130,0.1) 100%), radial-gradient(circle at 50% 50%, rgba(0,0,0,0.05) 0%, transparent 60%);
 	}
 
-	.product-card__badge {
-		position: absolute;
-		top: var(--space-md);
-		left: var(--space-md);
-		padding: 0.35rem 0.85rem;
-		border-radius: var(--radius-pill);
-		font-size: var(--font-size-xs);
-		font-weight: var(--font-weight-bold);
-		color: #fff;
-		z-index: 2;
-	}
-
-	.product-card__badge_hit {
-		background: var(--color-primary);
-	}
-
-	.product-card__badge_new {
-		background: var(--color-accent, #6366f1);
-	}
-
 	.product-card__content {
 		display: flex;
 		flex-direction: column;
 		padding: var(--space-lg);
 		flex: 1;
 		gap: var(--space-sm);
-	}
-
-	.product-card__meta {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-
-	.product-card__status {
-		font-size: var(--font-size-xs);
-		color: var(--color-success, #10b981);
-		font-weight: var(--font-weight-bold);
-		letter-spacing: 0.02em;
-		text-transform: uppercase;
 	}
 
 	.product-card__title {
@@ -242,16 +192,10 @@
 	.product-card__footer {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: flex-start;
 		padding-top: var(--space-md);
 		border-top: 1px dashed var(--color-border);
 		margin-bottom: var(--space-md);
-	}
-
-	.product-card__price {
-		font-size: var(--font-size-xl);
-		font-weight: var(--font-weight-black);
-		font-family: var(--font-display);
 	}
 
 	.product-card__links {
@@ -322,15 +266,5 @@
 	.upcoming-card__desc {
 		color: var(--color-text-muted);
 		font-size: var(--font-size-sm);
-	}
-
-	.upcoming-card__tag {
-		margin-top: var(--space-xs);
-		display: inline-block;
-		padding: 0.2rem 0.6rem;
-		background: var(--color-bg-alt);
-		border-radius: var(--radius-pill);
-		font-size: var(--font-size-xs);
-		color: var(--color-text-muted);
 	}
 </style>
