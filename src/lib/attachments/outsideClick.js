@@ -4,7 +4,7 @@ export function outsideClick(onoutside, { ignore } = {}) {
 			const { target } = event;
 			if (node.contains(target)) return;
 			if (ignore && target instanceof Element && target.closest(ignore)) return;
-			onoutside();
+			onoutside(node);
 		};
 
 		document.addEventListener('click', handle, true);

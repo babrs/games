@@ -1,5 +1,5 @@
 <script>
-	import { outsideClick, smartHeader } from '$lib/attachments';
+	import { outsideClick, smartSticky } from '$lib/attachments';
 	import { Logo } from '$lib/components';
 	import { base } from '$app/paths';
 	import { page } from '$app/state';
@@ -23,6 +23,10 @@
 	let { brand = 'Babr Games', tagline, homeHref, navItems = [] } = $props();
 
 	let menuOpen = $state(false);
+	let isFixed = $state(false);
+	let isRevealed = $state(false);
+	let isSolid = $state(false);
+	let headerHeight = $state(72);
 
 	const currentPath = $derived(page.url.pathname);
 
@@ -35,7 +39,41 @@
 	}
 </script>
 
-<header class="app-header" {@attach smartHeader({ topOffset: 0, onhide: closeMenu })}>
+<header
+	bind:clientHeight={headerHeight}
+	class="app-header"
+	class:app-header_fixed={isFixed}
+	class:app-header_revealed={isRevealed}
+	data-solid={isSolid || undefined}
+	style:--header-height="{headerHeight}px"
+	{@attach smartSticky({
+		side: 'top',
+		offset: headerHeight + 300,
+		threshold: 15,
+		onPassOffset: () => {
+			// 1. Шапка полностью ушла за верхний край — переводим в fixed и закрываем меню
+			isFixed = true;
+			isRevealed = false;
+			closeMenu();
+		},
+		onReveal: () => {
+			// 2. Скролл вверх — выдвигаем шапку и включаем плотный фон ([data-solid])
+			isRevealed = true;
+			isSolid = true;
+		},
+		onRehide: () => {
+			// 3. Снова скролл вниз — прячем шапку и закрываем меню
+			isRevealed = false;
+			closeMenu();
+		},
+		onReset: () => {
+			// 4. Вернулись в самый верх страницы — возвращаем прозрачность и исходное положение
+			isFixed = false;
+			isRevealed = false;
+			isSolid = false;
+		}
+	})}
+>
 	<div class="container app-header__inner">
 		<a class="app-header__brand" href={homeHref} onclick={closeMenu}>
 			<Logo />
@@ -159,7 +197,8 @@
 
 <style>
 	.app-header {
-		position: fixed;
+		/* В самом верху страницы прокручивается вместе с контентом поверх Hero */
+		position: absolute;
 		top: 0;
 		left: 0;
 		right: 0;
@@ -167,12 +206,29 @@
 		border-bottom: 1px solid transparent;
 		background: transparent;
 		color: var(--color-on-hero, #fff);
-		transform: translate3d(0, var(--smart-header-shift, 0px), 0);
 		transition:
 			background-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
 			border-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
 			color 350ms cubic-bezier(0.22, 1, 0.36, 1),
 			box-shadow 350ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	/* После прохождения offset шапка фиксируется за пределами верхнего края */
+	.app-header_fixed {
+		position: fixed;
+		top: calc(var(--header-height) * -1);
+		transform: translate3d(0, 0, 0);
+		transition:
+			transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+			background-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+			border-color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+			color 350ms cubic-bezier(0.22, 1, 0.36, 1),
+			box-shadow 350ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	/* При скролле вверх плавно выезжает на высоту шапки */
+	.app-header_fixed.app-header_revealed {
+		transform: translate3d(0, var(--header-height), 0);
 	}
 
 	.app-header :global(svg) {
