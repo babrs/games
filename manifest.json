@@ -1,0 +1,16 @@
+{
+  "name": "Приложение ведущего — Байкальская мафия",
+  "short_name": "Мафия Ведущий",
+  "start_url": "/mafia/baikal/host/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
