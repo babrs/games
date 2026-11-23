@@ -1,6 +1,9 @@
 <script>
 	import { base } from '$app/paths';
+	import { CardGrid } from '$lib/components';
 	import { HeroBanner } from '$lib/components';;
+	import SymbolPreview from './__components/SymbolPreview/index.js';
+	import SymbolModal from './__components/SymbolModal/index.js';
 
 	let { data } = $props();
 	const game = $derived(data.game);
